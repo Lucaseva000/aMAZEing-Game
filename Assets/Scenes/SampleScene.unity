@@ -568,6 +568,10 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  dashSpeed: 70
+  dashTime: 0.2
+  dashCooldown: 0.35
+  dashEffect: {fileID: 3912850822349952189, guid: dd6568ce3bdb44b469a57f3f5c623ca0, type: 3}
 --- !u!95 &204032399
 Animator:
   serializedVersion: 5
@@ -771,7 +775,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.0032673
+  orthographic size: 9.024412
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
