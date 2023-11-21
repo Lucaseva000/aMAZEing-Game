@@ -15,7 +15,7 @@ public class MenuManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();//Exits the game (Only works in a built version)
+        Application.Quit();
     }
 
 }

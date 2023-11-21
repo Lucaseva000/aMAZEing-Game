@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     private bool canDash = true;
     private bool dashed;
+    [Header("Pause Menu")]
+    public GameObject PausePanel;
 
     public static PlayerController Instance;
 
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviour
         Jump();
         Flip();
         StartDash();
+        Pause();
     }
 
     void getInputs()
@@ -196,6 +199,14 @@ public class PlayerController : MonoBehaviour
         else
         {
             jumpBufferCounter--;
+        }
+    }
+
+    public void Pause()
+    {
+        if (PausePanel.activeSelf == false && Input.GetButtonDown("Cancel")){
+                PausePanel.SetActive(true);
+                Time.timeScale = 0;
         }
     }
 }
