@@ -40,8 +40,13 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     private bool canDash = true;
     private bool dashed;
+
     [Header("Pause Menu")]
+    public GameObject DeathPanel;
+
+    [Header("Death Screen")]
     public GameObject PausePanel;
+    [SerializeField] public int PlayerHealth = 3;
 
     public static PlayerController Instance;
 
@@ -79,7 +84,9 @@ public class PlayerController : MonoBehaviour
         Jump();
         Flip();
         StartDash();
-        Pause();
+        PauseCheck();
+        DeathCheck();
+
     }
 
     void getInputs()
@@ -202,11 +209,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Pause()
+    public void PauseCheck()
     {
         if (PausePanel.activeSelf == false && Input.GetButtonDown("Cancel")){
                 PausePanel.SetActive(true);
                 Time.timeScale = 0;
+        }
+    }
+
+    public void DeathCheck()
+    {
+        if(PlayerHealth == 0 && DeathPanel.activeSelf == false)
+        {
+            DeathPanel.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }
