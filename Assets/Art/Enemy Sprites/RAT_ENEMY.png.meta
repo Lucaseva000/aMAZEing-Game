@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream:Assets/Art/Enemy Sprites/RAT_ENEMY.png.meta
 guid: 4e9f5545515c250458d80b0313ce7731
-=======
-guid: 4b1fa8c9e751f744589b03e9099b4da7
->>>>>>> Stashed changes:Assets/platformer-movement-main/Platformer Demo - Unity Project/Assets/TextMesh Pro/Sprites/EmojiOne.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -67,16 +63,16 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 0
+  applyGammaDecoding: 1
   swizzle: 50462976
-  cookieLightType: 0
+  cookieLightType: 2
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: 4
-    textureCompression: 1
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -89,7 +85,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -102,7 +98,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -128,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c83b7ceae1f2b4447861e426efff58b9
-      internalID: 704040071
+      spriteID: 1aecf3182ff8a124787127e06ea44913
+      internalID: -156723678
       vertices: []
       indices: 
       edges: []
@@ -149,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05c0fc26109ff0b49b0922950e100bf3
-      internalID: 844860788
+      spriteID: fb2028c596029944ab8b15d86dad701a
+      internalID: -685830690
       vertices: []
       indices: 
       edges: []
@@ -170,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67be881ac0b429b4d99cbfcc5c519cfa
-      internalID: -1938533202
+      spriteID: 367c57b40d7a3de4e93c3307a80504f5
+      internalID: 1326779387
       vertices: []
       indices: 
       edges: []
@@ -191,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1253144f774cb494f94d3f0d6b29c45e
-      internalID: -1652255329
+      spriteID: 40479308c41d3ca46aa23f23e30206f3
+      internalID: 468106648
       vertices: []
       indices: 
       edges: []
@@ -212,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7463ebfe49551174090a106854bd37fa
-      internalID: 220520946
+      spriteID: 07339b23342f0994091a07d3ce97834d
+      internalID: 207085815
       vertices: []
       indices: 
       edges: []
@@ -233,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b78431f80e7e05045b71f66481ee80be
-      internalID: 1390526902
+      spriteID: d9d03263196a8c040b1191cf81d122bc
+      internalID: 1776353024
       vertices: []
       indices: 
       edges: []
@@ -254,8 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9a535acc407a38489fc3d1843a3c3bd
-      internalID: -36296852
+      spriteID: a2b362ed921d47149b7f8813fedffc30
+      internalID: 1017291473
       vertices: []
       indices: 
       edges: []
@@ -275,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97cd183767191c24890e085e69bfd303
-      internalID: 1179519989
+      spriteID: a94e3b32ecfda7747891a9cf2b116195
+      internalID: 1788499165
       vertices: []
       indices: 
       edges: []
@@ -296,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59c63912e4cf795448fe2334e62d2719
-      internalID: 87085061
+      spriteID: 34c4f0eda47b0b64ab485d6fe57ad43c
+      internalID: -99517559
       vertices: []
       indices: 
       edges: []
@@ -317,8 +313,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8eab6a12da93cc04193d7cc6c618af91
-      internalID: 930130972
+      spriteID: c66ae8fce12b4ab449d78af3bb47bfdd
+      internalID: 678770989
       vertices: []
       indices: 
       edges: []
@@ -338,8 +334,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fcf0f075151c254dac07703fd0bcdbe
-      internalID: -1456254407
+      spriteID: 8f1587547866b684fb0ca3755d5d8931
+      internalID: 362887273
       vertices: []
       indices: 
       edges: []
@@ -347,7 +343,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: a9cd0b99b436a094e848a153507aee22
     internalID: 0
     vertices: []
     indices: 
@@ -355,17 +351,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RAT_ENEMY_0: 704040071
-      RAT_ENEMY_1: 844860788
-      RAT_ENEMY_10: -1456254407
-      RAT_ENEMY_2: -1938533202
-      RAT_ENEMY_3: -1652255329
-      RAT_ENEMY_4: 220520946
-      RAT_ENEMY_5: 1390526902
-      RAT_ENEMY_6: -36296852
-      RAT_ENEMY_7: 1179519989
-      RAT_ENEMY_8: 87085061
-      RAT_ENEMY_9: 930130972
+      RAT_ENEMY_0: -156723678
+      RAT_ENEMY_1: -685830690
+      RAT_ENEMY_10: 362887273
+      RAT_ENEMY_2: 1326779387
+      RAT_ENEMY_3: 468106648
+      RAT_ENEMY_4: 207085815
+      RAT_ENEMY_5: 1776353024
+      RAT_ENEMY_6: 1017291473
+      RAT_ENEMY_7: 1788499165
+      RAT_ENEMY_8: -99517559
+      RAT_ENEMY_9: 678770989
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
