@@ -15,6 +15,7 @@ public class spawnPlayer : MonoBehaviour
         if (newDirection.Equals(m.getDirection()))
         {
             p.SetActive(true);
+            m.setDirection(null);
         }
     }
 

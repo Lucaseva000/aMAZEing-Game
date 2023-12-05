@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Death Screen")]
     public GameObject PausePanel;
-    [SerializeField] public int PlayerHealth = 3;
+    [SerializeField] public PlayerHealth playerHealth;
 
     public static PlayerController Instance;
 
@@ -222,7 +222,7 @@ public class PlayerController : MonoBehaviour
 
     public void DeathCheck()
     {
-        if(PlayerHealth == 0 && DeathPanel.activeSelf == false)
+        if (playerHealth.getHealth() == 0 && DeathPanel.activeSelf == false)
         {
             DeathPanel.SetActive(true);
             Time.timeScale = 0;

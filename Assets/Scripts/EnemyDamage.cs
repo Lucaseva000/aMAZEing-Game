@@ -7,11 +7,13 @@ public class EneE : MonoBehaviour
     public int damage;
     public PlayerHealth playerHealth;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    void OnCollisionEnter2D(Collision2D collisionEnemy)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collisionEnemy.gameObject.CompareTag("Player"))
         {
-            playerHealth.TakeDamage(damage);
+            playerHealth.DecreaseHealth(damage);
+
         }
     }
 }

@@ -2,24 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+[CreateAssetMenu(menuName = "PlayerHealth")]
+public class PlayerHealth : ScriptableObject
 {
     public int maxHealth = 10;
     public int currentHealth;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void DecreaseHealth(int a)
     {
-        currentHealth -= damage;
+        currentHealth -= a;
+    }
 
-        if(currentHealth <= 0)
-        {
-            Destroy(gameObject, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-        }
+    public void SetPlayerHealth(int h)
+    {
+        currentHealth = h;
+    }
+
+    public int getHealth()
+    {
+        return currentHealth;
+    }
+
+    public int getMaxHealth()
+    {
+        return maxHealth;
     }
 }
