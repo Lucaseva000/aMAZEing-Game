@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 20347103}
   - component: {fileID: 20347102}
   - component: {fileID: 20347101}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,6 +575,7 @@ MonoBehaviour:
     m_Bits: 128
   direction: left
   M: {fileID: 11400000, guid: 306f27037391f8f438360a2b0b3027a9, type: 2}
+  targetScene: SampleScene2
 --- !u!1 &1490474901
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,9 +714,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 74017775145936086, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 650587768467139889, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6626448548650541543, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6626448548650541543, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6626448548650541543, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6626448548650541543, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7977757012348909936, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
       propertyPath: m_RootOrder

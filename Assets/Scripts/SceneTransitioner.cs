@@ -11,12 +11,13 @@ public class SceneTransitioner : MonoBehaviour
    [SerializeField] public LayerMask P;
     public string direction;
     public MoveDirectionSO M;
+    public string targetScene;
     void Update()
     {
         if (CheckForPlayer())
         {
             M.setDirection(direction);
-            SceneManager.LoadScene("SampleScene2");
+            SceneManager.LoadScene(targetScene);
 
         }
     }
