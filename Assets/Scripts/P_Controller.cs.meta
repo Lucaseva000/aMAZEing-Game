@@ -3,7 +3,11 @@ guid: a90512d7a26c1a34e8109733d28ee57b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - groundCheckPoint: {instanceID: 0}
+  - dashEffect: {instanceID: 0}
+  - DeathPanel: {instanceID: 0}
+  - PausePanel: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

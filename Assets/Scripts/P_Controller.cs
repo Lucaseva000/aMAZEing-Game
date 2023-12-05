@@ -77,11 +77,11 @@ public class PlayerController : MonoBehaviour
     {
         getInputs();
         UpdateJumpVariables();
-        if (pState.dashing) return;
+        /*if (pState.dashing) return;*/
         Move();
         Jump();
         Flip();
-        StartDash();
+        /*StartDash();*/
         PauseCheck();
         DeathCheck();
 
@@ -137,6 +137,7 @@ public class PlayerController : MonoBehaviour
         pState.dashing = false;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+        dashed = false;
     }
 
     public bool Grounded()
@@ -212,6 +213,10 @@ public class PlayerController : MonoBehaviour
         if (PausePanel.activeSelf == false && Input.GetButtonDown("Cancel")){
                 PausePanel.SetActive(true);
                 Time.timeScale = 0;
+        } else if(PausePanel.activeSelf == true && Input.GetButtonDown("Cancel"))
+        {
+            PausePanel.SetActive(false);
+            Time.timeScale = 1;
         }
     }
 
