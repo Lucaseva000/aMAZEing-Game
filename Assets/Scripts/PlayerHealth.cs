@@ -7,13 +7,6 @@ public class PlayerHealth : ScriptableObject
 {
     public int maxHealth = 10;
     public int currentHealth;
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        currentHealth = maxHealth;
-    }
-
     public void DecreaseHealth(int a)
     {
         currentHealth -= a;
