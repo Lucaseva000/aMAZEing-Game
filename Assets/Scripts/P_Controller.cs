@@ -3,6 +3,26 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // ======================================== //
+    //               NEW STUFF                  //
+    // ======================================== //
+    // ---------------------------------------- //
+    [Header("Animation")]
+    [SerializeField] private Animator animator;
+    private string currentAnimation;
+    // ---------------------------------------- //
+    // ---------------------------------------- //
+    // ======================================== //
+    //               OLD STUFF                  //
+    // ======================================== //
+    [Header("Pause Menu")]
+    public GameObject DeathPanel;
+
+    [Header("Death Screen")]
+    public GameObject PausePanel;
+    [SerializeField] public PlayerHealth playerHealth;
+
+    public static PlayerController Instance;
     [Header("Horizontal Movement Settings")]
     [SerializeField] private float walkSpeed = 1;
     [Space(5)]
@@ -39,14 +59,6 @@ public class PlayerController : MonoBehaviour
     private bool canDash = true;
     private bool dashed;
 
-    [Header("Pause Menu")]
-    public GameObject DeathPanel;
-
-    [Header("Death Screen")]
-    public GameObject PausePanel;
-    [SerializeField] public PlayerHealth playerHealth;
-
-    public static PlayerController Instance;
 
     private void Awake()
     {
