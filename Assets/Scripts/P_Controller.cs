@@ -60,8 +60,7 @@ public class PlayerController : MonoBehaviour
     private bool dashed;
 
 
-    private void Awake()
-    {
+    private void Awake() {
         if(Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -73,8 +72,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         pState = GetComponent<PlayerStateList>();
 
         rb = GetComponent<Rigidbody2D>();
@@ -85,27 +83,19 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         getInputs();
         UpdateJumpVariables();
-        /*if (pState.dashing) return;*/
         Move();
         Jump();
         Flip();
-        /*StartDash();*/
         PauseCheck();
         DeathCheck();
-
     }
-
-    void getInputs()
-    {
+    void getInputs() {
         xAxis = Input.GetAxisRaw("Horizontal");
     }
-
-    void Flip()
-    {
+    void Flip() {
         if (xAxis < 0)
         {
             transform.localScale = new Vector2(-1, transform.localScale.y);
@@ -115,15 +105,11 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector2(1, transform.localScale.y);
         }
     }
-
-    private void Move()
-    {
+    private void Move() {
         rb.velocity = new Vector2(walkSpeed * xAxis, rb.velocity.y);
         anim.SetBool("Walking", rb.velocity.x != 0 && Grounded());
     }
-
-    void StartDash()
-    {
+    void StartDash() {
         if (Input.GetButtonDown("Dash") && canDash && !dashed)
         {
             StartCoroutine(Dash());
@@ -135,9 +121,7 @@ public class PlayerController : MonoBehaviour
             dashed = false;
         }
     }
-
-    IEnumerator Dash()
-    {
+    IEnumerator Dash() {
         canDash = false;
         pState.dashing = true;
         anim.SetTrigger("Dashing");
@@ -151,9 +135,7 @@ public class PlayerController : MonoBehaviour
         canDash = true;
         dashed = false;
     }
-
-    public bool Grounded()
-    {
+    public bool Grounded() {
         if (Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundCheckY, whatIsGround)
             || Physics2D.Raycast(groundCheckPoint.position + new Vector3(groundCheckX, 0, 0), Vector2.down, groundCheckY, whatIsGround)
             || Physics2D.Raycast(groundCheckPoint.position + new Vector3(-groundCheckX, 0, 0), Vector2.down, groundCheckY, whatIsGround))
@@ -165,9 +147,7 @@ public class PlayerController : MonoBehaviour
             return false;
         }
     }
-
-    void Jump()
-    {   //Tracks if Jump Released Early
+    void Jump() {   //Tracks if Jump Released Early
         if(Input.GetButtonUp("Jump") && rb.velocity.y > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -196,9 +176,7 @@ public class PlayerController : MonoBehaviour
 
         anim.SetBool("Jumping", !Grounded());
     }
-
-    void UpdateJumpVariables()
-    {
+    void UpdateJumpVariables() {
         if (Grounded())
         {
             pState.jumping = false;
@@ -219,9 +197,7 @@ public class PlayerController : MonoBehaviour
             jumpBufferCounter--;
         }
     }
-
-    public void PauseCheck()
-    {
+    public void PauseCheck() {
         if (PausePanel.activeSelf == false && Input.GetButtonDown("Cancel")){
                 PausePanel.SetActive(true);
                 Time.timeScale = 0;
@@ -231,9 +207,7 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 1;
         }
     }
-
-    public void DeathCheck()
-    {
+    public void DeathCheck() {
         if (playerHealth.getHealth() == 0 && DeathPanel.activeSelf == false)
         {
             DeathPanel.SetActive(true);

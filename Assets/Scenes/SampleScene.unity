@@ -1528,6 +1528,14 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6113209484666733419, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113209484666733419, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6626448548650541543, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
       propertyPath: m_SizeDelta.x
       value: 200
@@ -1607,6 +1615,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 650587768467139889, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 535599200030869563}
+    - targetCorrespondingSourceObject: {fileID: 650587768467139889, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 535599200030869577}
   m_SourcePrefab: {fileID: 100100000, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
 --- !u!1 &535599200030869562 stripped
 GameObject:
@@ -1641,6 +1652,36 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 4837279069788529888, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
   m_PrefabInstance: {fileID: 535599200030869561}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &535599200030869577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535599200030869562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 2b19c405273c7bf4ea523de13f9def97, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Land
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &4202898385159451223
 PrefabInstance:
   m_ObjectHideFlags: 0
