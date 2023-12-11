@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
         playerControls.Land.Crouch.started  += CrouchInput;
         playerControls.Land.Crouch.canceled += CrouchInput;
         pState = GetComponent<PlayerStateList>();
+        p.setRegenPause(false);
     }
     // ---------------------------------------- //
     // Updates
@@ -335,13 +336,17 @@ public class PlayerController : MonoBehaviour
     }
     // ---------------------------------------- //
     public void PauseCheck() {
-        if (PausePanel.activeSelf == false && Input.GetButtonDown("Cancel")){
-            PausePanel.SetActive(true);
-            Time.timeScale = 0;
-        } else if(PausePanel.activeSelf == true && Input.GetButtonDown("Cancel"))
+        if(!(p.getHealth() == 0))
         {
-            PausePanel.SetActive(false);
-            Time.timeScale = 1;
+            if (PausePanel.activeSelf == false && Input.GetButtonDown("Cancel")){
+                PausePanel.SetActive(true);
+                Time.timeScale = 0;
+            } else if(PausePanel.activeSelf == true && Input.GetButtonDown("Cancel"))
+            {
+                PausePanel.SetActive(false);
+                Time.timeScale = 1;
+            }
+
         }
     }
     public void DeathCheck() {
