@@ -9,7 +9,7 @@ public class StartMenuBegin : MonoBehaviour
     {
         SceneManager.LoadScene(1);//Scene Manager
         Time.timeScale = 1;
-        P.SetPlayerHealth(P.maxHealth);
+        P.setHealth(P.getMaxHealth());
     }
 
     public void QuitGame()

@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public GameObject PausePanel;
 
     [Header("Death Screen")]
-    [SerializeField] public PlayerHealth playerHealth;
+    [SerializeField] public PlayerHealth p;
     public GameObject DeathPanel;
     // ======================================== //
     //               NEW STUFF                  //
@@ -124,6 +124,11 @@ public class PlayerController : MonoBehaviour
         CoyateTimer();
         if (jumpBufferCounter > 0) jumpBufferCounter -= Time.deltaTime;
         IsWallSliding();
+        if (p.getHealth() > p.getMaxHealth())
+        {
+            p.setHealth(p.getMaxHealth());
+        }
+
     }
     // In fixed update do all physics
     void FixedUpdate(){
@@ -132,6 +137,12 @@ public class PlayerController : MonoBehaviour
         Jump();
         Crouch();
         WallSlide();
+        if (!p.getRegen())
+        {
+            _ = StartCoroutine(Healing());
+
+
+        }
     }
     // ---------------------------------------- //
     // Useful Functions
@@ -334,10 +345,37 @@ public class PlayerController : MonoBehaviour
         }
     }
     public void DeathCheck() {
-        if (playerHealth.getHealth() == 0 && DeathPanel.activeSelf == false)
+        if (p.getHealth() == 0 && DeathPanel.activeSelf == false)
         {
             DeathPanel.SetActive(true);
             Time.timeScale = 0;
+        }
+
+
+
+    }
+    public void damage(int d)
+    {
+        p.decreaseHealth(d);
+        //StartCoroutine(Shaking());
+    }
+    public IEnumerator Healing()
+    {
+
+        if (p.getHealth() < p.getMaxHealth() && !p.getRegen())
+        {
+            p.setRegenPause(true);
+            if (p.getJustHit())
+            {
+                p.setJustHit(false);
+                yield return new WaitForSeconds(3f);
+            }
+            yield return new WaitForSeconds(1f);
+            if (!p.getJustHit())
+            {
+                p.increaseHealth(1);
+            }
+            p.setRegenPause(false);
         }
     }
     // ---------------------------------------- //

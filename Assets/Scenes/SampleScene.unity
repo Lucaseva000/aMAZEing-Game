@@ -754,7 +754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  playerHealth: {fileID: 11400000, guid: 40c3c5cc59c334b469994924d402aba8, type: 2}
+  p: {fileID: 11400000, guid: 40c3c5cc59c334b469994924d402aba8, type: 2}
 --- !u!114 &627276837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1614,6 +1614,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7977757012348909936, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112116361335156929, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636100594523191124, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9208820488010211000, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}

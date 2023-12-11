@@ -5,14 +5,14 @@ using UnityEngine;
 public class EneE : MonoBehaviour
 {
     public int damage;
-    public PlayerHealth playerHealth;
+    public PlayerHealth p;
 
 
     void OnCollisionEnter2D(Collision2D collisionEnemy)
     {
         if (collisionEnemy.gameObject.CompareTag("Player"))
         {
-            playerHealth.DecreaseHealth(damage);
+            p.decreaseHealth(damage);
 
         }
     }
