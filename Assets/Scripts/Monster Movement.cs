@@ -7,7 +7,7 @@ public class MonsterMovement : MonoBehaviour
 
     public Transform[] checkpoints;
     public float movespeed;
-    private int checkpointDestination;
+    private int checkpointDestination = 0;
 
     public Transform playerTransform;
     private bool isChasing;
