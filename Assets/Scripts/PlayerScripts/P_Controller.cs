@@ -81,9 +81,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 wallSlideSize;
     private bool wallSlide;
     // ---------------------------------------- //
+    [Header("Attack")]
+    [SerializeField] private BoxCollider2D AttackHitbox;
+    // ---------------------------------------- //
     private void Awake() {
         if(Instance != null && Instance != this) Destroy(gameObject);
         else Instance = this;
+        AttackHitbox = transform.Find("AttackHitBox").GetComponent<BoxCollider2D>();
         playerControls = new PlayerControler();
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
@@ -110,6 +114,7 @@ public class PlayerController : MonoBehaviour
         playerControls.Land.Dash.started    += TryToDash;
         playerControls.Land.Crouch.started  += CrouchInput;
         playerControls.Land.Crouch.canceled += CrouchInput;
+        playerControls.Land.Attack.started += Attack;
         pState = GetComponent<PlayerStateList>();
         p.setRegenPause(false);
     }
@@ -147,6 +152,8 @@ public class PlayerController : MonoBehaviour
     }
     // ---------------------------------------- //
     // Useful Functions
+
+    //You can call this function whenever to change the animation
     void ChangeAnimationState(string newState){
         if (currentAnimation == newState) return;
         animator.Play(newState);
@@ -186,6 +193,20 @@ public class PlayerController : MonoBehaviour
         return Physics2D.OverlapBox(centerOfCollider, sizeOfCollider, 0, target); 
     }
     // ---------------------------------------- //
+    void Attack(InputAction.CallbackContext context)
+    {
+        Invoke("AttackOn", 0.2f);
+        Invoke("AttackOff", 0.2f);
+       
+    }
+    void attackOn()
+    {
+        AttackHitbox.gameObject.SetActive(true);
+    }
+    void attackOff()
+    {
+        AttackHitbox.gameObject.SetActive(false);
+    }
     // Horizontal Movement
     void HorizontalMovement(){
         if (!disableMovement && !disableHorizontalMovement){
