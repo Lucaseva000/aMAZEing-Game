@@ -166,11 +166,12 @@ GameObject:
   - component: {fileID: 2225775322132648158}
   - component: {fileID: 6113209484666733419}
   - component: {fileID: 1849818081654748853}
-  - component: {fileID: 9208820488010211000}
   - component: {fileID: 4837279069788529888}
-  - component: {fileID: 5158606265971515013}
   - component: {fileID: 5525150994071957680}
   - component: {fileID: 6336937111952630426}
+  - component: {fileID: 9208820488010211000}
+  - component: {fileID: 5158606265971515013}
+  - component: {fileID: 8903237029636789536}
   m_Layer: 7
   m_Name: Player1Object
   m_TagString: Player
@@ -323,44 +324,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &9208820488010211000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 650587768467139889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a90512d7a26c1a34e8109733d28ee57b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PausePanel: {fileID: 74017775145936086}
-  p: {fileID: 11400000, guid: 40c3c5cc59c334b469994924d402aba8, type: 2}
-  DeathPanel: {fileID: 3349696847101284062}
-  animator: {fileID: 4837279069788529888}
-  rb: {fileID: 1849818081654748853}
-  bc: {fileID: 6113209484666733419}
-  terrain:
-    serializedVersion: 2
-    m_Bits: 8
-  rotationPoint: {fileID: 8069930103697980960}
-  tr: {fileID: 5525150994071957680}
-  speed: 10
-  damper: 0.5
-  jumpForce: 27.5
-  coyateTime: 0.2
-  jumpBuffer: 0.2
-  dashCooldown: 1
-  dashDuration: 0.25
-  dashStrength: 20
-  crouchHeightPercent: 0.625
-  crouchSpeedPercent: 0.75
-  wallSlideSpeed: 2.5
-  wallSlideSizePercent: 0.625
-  wallJumpDuration: 0.2
-  wallJumpAngle: 60
-  AttackHitbox: {fileID: 0}
 --- !u!95 &4837279069788529888
 Animator:
   serializedVersion: 5
@@ -382,20 +345,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5158606265971515013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 650587768467139889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa115bc7b6dfe9748acfdeb69bb3e0fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumping: 0
-  dashing: 0
 --- !u!96 &5525150994071957680
 TrailRenderer:
   serializedVersion: 3
@@ -539,6 +488,70 @@ MonoBehaviour:
   m_DefaultActionMap: Land
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &9208820488010211000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650587768467139889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90512d7a26c1a34e8109733d28ee57b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PausePanel: {fileID: 74017775145936086}
+  p: {fileID: 11400000, guid: 40c3c5cc59c334b469994924d402aba8, type: 2}
+  DeathPanel: {fileID: 3349696847101284062}
+  animator: {fileID: 4837279069788529888}
+  rb: {fileID: 1849818081654748853}
+  bc: {fileID: 6113209484666733419}
+  terrain:
+    serializedVersion: 2
+    m_Bits: 8
+  rotationPoint: {fileID: 8069930103697980960}
+  tr: {fileID: 5525150994071957680}
+  speed: 10
+  damper: 0.5
+  jumpForce: 27.5
+  coyateTime: 0.2
+  jumpBuffer: 0.2
+  dashCooldown: 1
+  dashDuration: 0.25
+  dashStrength: 20
+  crouchHeightPercent: 0.625
+  crouchSpeedPercent: 0.75
+  wallSlideSpeed: 2.5
+  wallSlideSizePercent: 0.625
+  wallJumpDuration: 0.2
+  wallJumpAngle: 60
+  AttackHitbox: {fileID: 0}
+--- !u!114 &5158606265971515013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650587768467139889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa115bc7b6dfe9748acfdeb69bb3e0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumping: 0
+  dashing: 0
+--- !u!114 &8903237029636789536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650587768467139889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896e320965c4a3d49acf8c25174fb5f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &793343061843901099
 GameObject:
   m_ObjectHideFlags: 0
