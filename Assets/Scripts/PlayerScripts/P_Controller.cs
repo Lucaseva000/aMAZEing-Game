@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     PlayerStateList pState;
     public static PlayerController Instance;
     [Header("Pause Menu")]
-    public GameObject PausePanel;
+    //public GameObject PausePanel;
 
     [Header("Death Screen")]
     [SerializeField] public PlayerHealth p;
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
     // Updates
     // In update get all inputs
     void Update(){
-        PauseCheck();
+        //PauseCheck();
         DeathCheck();
         xMovement = playerControls.Land.Move.ReadValue<float>();
         Flip();
@@ -345,7 +345,7 @@ public class PlayerController : MonoBehaviour
         else wallSlide  = rb.velocity.y < 0 && !isCrouching && ((xMovement < 0 && DirectionalCollide(4, 0.1f, terrain)) || (xMovement > 0 && DirectionalCollide(2, 0.1f, terrain)));
     }
     // ---------------------------------------- //
-     public void PauseCheck() {
+     /*public void PauseCheck() {
         if(!(p.getHealth() == 0))
         {
             if (PausePanel.activeSelf == false && Input.GetButtonDown("Cancel")){
@@ -358,7 +358,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-    }
+    }*/
     public void DeathCheck() {
         if (p.getHealth() == 0 && DeathPanel.activeSelf == false)
         {
