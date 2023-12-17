@@ -81,13 +81,11 @@ public class PlayerController : MonoBehaviour
     private Vector2 wallSlideSize;
     private bool wallSlide;
     // ---------------------------------------- //
-    [Header("Attack")]
-    [SerializeField] private BoxCollider2D AttackHitbox;
+
     // ---------------------------------------- //
     private void Awake() {
         if(Instance != null && Instance != this) Destroy(gameObject);
         else Instance = this;
-        AttackHitbox = transform.Find("AttackHitBox").GetComponent<BoxCollider2D>();
         playerControls = new PlayerControler();
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
@@ -195,17 +193,8 @@ public class PlayerController : MonoBehaviour
     // ---------------------------------------- //
     void Attack(InputAction.CallbackContext context)
     {
-        Invoke("AttackOn", 0.2f);
-        Invoke("AttackOff", 0.2f);
-       
-    }
-    void attackOn()
-    {
-        AttackHitbox.gameObject.SetActive(true);
-    }
-    void attackOff()
-    {
-        AttackHitbox.gameObject.SetActive(false);
+
+
     }
     // Horizontal Movement
     void HorizontalMovement(){
@@ -356,7 +345,7 @@ public class PlayerController : MonoBehaviour
         else wallSlide  = rb.velocity.y < 0 && !isCrouching && ((xMovement < 0 && DirectionalCollide(4, 0.1f, terrain)) || (xMovement > 0 && DirectionalCollide(2, 0.1f, terrain)));
     }
     // ---------------------------------------- //
-    public void PauseCheck() {
+     public void PauseCheck() {
         if(!(p.getHealth() == 0))
         {
             if (PausePanel.activeSelf == false && Input.GetButtonDown("Cancel")){
