@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     public float timer = 0f;
 
 
-    // Update is called once per frame
+    // The damage only applies on the first frame of the attack
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q) && !attacking)

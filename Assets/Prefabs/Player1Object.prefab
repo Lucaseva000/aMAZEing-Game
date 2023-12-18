@@ -2453,13 +2453,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd1895527328814dacd5239ec6bc63b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 200
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
-  rP: {fileID: 6949332005506189322}
+  aimer: {fileID: 6949332005506189322}
   damage: 3
-  nowAttacking: 0
 --- !u!1 &6118175971894932258
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+//Main menu function that updates the player so that everything is reset
 public class StartMenuBegin : MonoBehaviour
 {
+
     public PlayerHealth P;
     public void StartGame()
     {

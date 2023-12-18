@@ -7,9 +7,9 @@ public class EnemyHealth : MonoBehaviour
     public int enemyHealth;
     public GameObject enemy;
 
-    public void damage(int i)
+    public void damage(int dmg)
     {
-        enemyHealth -= i;
+        enemyHealth -= dmg;
     }
 
     public void Update()
