@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142e6fd0f6c27b74ca7a2ad6e094ae72, type: 3}
   m_Name: Player One
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 20
   currentHealth: 0
   pauseHealthRegen: 1
   justHit: 1

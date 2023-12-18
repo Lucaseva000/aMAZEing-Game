@@ -15,8 +15,6 @@ public class PlayerController : MonoBehaviour
     // ======================================== //
     PlayerStateList pState;
     public static PlayerController Instance;
-    [Header("Pause Menu")]
-    //public GameObject PausePanel;
 
     [Header("Death Screen")]
     [SerializeField] public PlayerHealth p;
@@ -82,6 +80,12 @@ public class PlayerController : MonoBehaviour
     private bool wallSlide;
     // ---------------------------------------- //
 
+    [Header("Enemy Knockback")]
+    [SerializeField] public float KBForce;
+    [SerializeField] public float KBCounter;
+    [SerializeField] public float KBTotalTime;
+    public bool KnockFromRight;
+
     // ---------------------------------------- //
     private void Awake() {
         if(Instance != null && Instance != this) Destroy(gameObject);
@@ -120,7 +124,6 @@ public class PlayerController : MonoBehaviour
     // Updates
     // In update get all inputs
     void Update(){
-        //PauseCheck();
         DeathCheck();
         xMovement = playerControls.Land.Move.ReadValue<float>();
         Flip();
@@ -137,7 +140,21 @@ public class PlayerController : MonoBehaviour
     // In fixed update do all physics
     void FixedUpdate(){
         playerOffset = new Vector2(pt.position.x, pt.position.y);
-        HorizontalMovement();
+        if(KBCounter <= 0)
+        {
+            HorizontalMovement();
+        }
+        else{
+            if (KnockFromRight)
+            {
+                rb.velocity = new Vector2(-KBForce, KBForce);
+            }
+            else if (!KnockFromRight)
+            {
+                rb.velocity = new Vector2(KBForce, KBForce);
+            }
+            KBCounter -= Time.deltaTime;
+        }
         Jump();
         Crouch();
         WallSlide();
@@ -345,20 +362,7 @@ public class PlayerController : MonoBehaviour
         else wallSlide  = rb.velocity.y < 0 && !isCrouching && ((xMovement < 0 && DirectionalCollide(4, 0.1f, terrain)) || (xMovement > 0 && DirectionalCollide(2, 0.1f, terrain)));
     }
     // ---------------------------------------- //
-     /*public void PauseCheck() {
-        if(!(p.getHealth() == 0))
-        {
-            if (PausePanel.activeSelf == false && Input.GetButtonDown("Cancel")){
-                PausePanel.SetActive(true);
-                Time.timeScale = 0;
-            } else if(PausePanel.activeSelf == true && Input.GetButtonDown("Cancel"))
-            {
-                PausePanel.SetActive(false);
-                Time.timeScale = 1;
-            }
 
-        }
-    }*/
     public void DeathCheck() {
         if (p.getHealth() == 0 && DeathPanel.activeSelf == false)
         {
@@ -372,7 +376,6 @@ public class PlayerController : MonoBehaviour
     public void damage(int d)
     {
         p.decreaseHealth(d);
-        //StartCoroutine(Shaking());
     }
     public IEnumerator Healing()
     {
