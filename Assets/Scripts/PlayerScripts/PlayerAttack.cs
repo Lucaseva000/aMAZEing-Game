@@ -13,7 +13,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && !attacking)
         {
             Attack();
         }
@@ -26,12 +26,6 @@ public class PlayerAttack : MonoBehaviour
                 timer = 0;
                 attacking = false;
                 AttackArea.SetActive(attacking);
-                if (AttackArea.GetComponent<AttackArea>().IfHit())
-                {
-                    AttackArea.GetComponent<AttackArea>().setHit(false);
-                    AttackArea.GetComponent<AttackArea>().setEnemyNormal();
-                    
-                }
             }
         }
     }
@@ -39,5 +33,6 @@ public class PlayerAttack : MonoBehaviour
     {
         attacking = true;
         AttackArea.SetActive(true);
+        AttackArea.GetComponent<AttackArea>().Attack();
     }
 }

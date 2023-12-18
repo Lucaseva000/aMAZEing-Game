@@ -1,38 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Mathematics;
 
 public class AttackArea : MonoBehaviour
 {
-
+    
+    public LayerMask enemyLayer;
+    public GameObject rP;
     public int damage = 3;
-    private EnemyDamage d;
-    private bool didHit = false;
+    private EnemyHealth e;
+    private RaycastHit2D r;
+    public bool nowAttacking;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+   
+    public void Attack()
     {
-        GameObject other = collision.gameObject;
-        if (other.CompareTag("Enemy")){
-            Debug.Log("Player");
-            d = other.GetComponent<EnemyDamage>();
-            d.isBeingHit = true;
-            EnemyHealth e = other.GetComponent<EnemyHealth>();
-            e.damage(damage);
-            didHit = true;
+        if(Physics2D.Linecast(transform.position, rP.transform.position))
+        {
+            r = Physics2D.Linecast(transform.position, rP.transform.position);
             
-                }
+            if (r.transform.gameObject.CompareTag("Enemy"))
+            {
+                e = r.transform.gameObject.GetComponent<EnemyHealth>();
+                e.damage(damage);
+            }
+        }
     }
  
-    public void setEnemyNormal()
-    {
-        d.isBeingHit = false;
-    }
-    public bool IfHit()
-    {
-        return didHit;
-    }
-    public void setHit(bool b)
-    {
-        didHit = b;
-    }
 }

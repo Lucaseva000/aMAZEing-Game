@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private BoxCollider2D bc;
     [SerializeField] private LayerMask terrain;
-    [SerializeField] private GameObject rotationPoint;
+    [SerializeField] public GameObject rotationPoint;
     [SerializeField] private TrailRenderer tr;
     private Transform pt;
     private float gravity;
@@ -373,6 +373,7 @@ public class PlayerController : MonoBehaviour
 
 
     }
+    //Access the damage function in the PlayerHealth script
     public void damage(int d)
     {
         p.decreaseHealth(d);

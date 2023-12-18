@@ -6,8 +6,7 @@ public class EnemyDamage : MonoBehaviour
 {
     public int damage;
     private PlayerController p;
-    private AttackArea d;
-    public bool isBeingHit;
+
 
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -15,22 +14,20 @@ public class EnemyDamage : MonoBehaviour
         GameObject other = collision.gameObject;
         if (other.CompareTag("Player"))
         {
-            d = other.GetComponent<AttackArea>();
-            if (!isBeingHit && !d.IfHit())
+           
+            p = other.GetComponentInParent<PlayerController>();
+            p.KBCounter = p.KBTotalTime;
+            if(collision.transform.position.x <= transform.position.x)
             {
-                p = other.GetComponentInParent<PlayerController>();
-                p.KBCounter = p.KBTotalTime;
-                if(collision.transform.position.x <= transform.position.x)
-                {
-                    p.KnockFromRight = true;
-                }
-                else
-                {
-                    p.KnockFromRight = false;
-                }
-
-                p.damage(damage);
+                p.KnockFromRight = true;
             }
+            else
+            {
+                p.KnockFromRight = false;
+            }
+
+            p.damage(damage);
+            
         }
     }
 }

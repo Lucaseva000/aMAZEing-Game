@@ -911,7 +911,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  isBeingHit: 0
 --- !u!114 &627276837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,7 +962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c318573913e8964469853aa21f1d3481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 5
+  enemyHealth: 6
   enemy: {fileID: 627276831}
 --- !u!1 &722375262
 GameObject:
