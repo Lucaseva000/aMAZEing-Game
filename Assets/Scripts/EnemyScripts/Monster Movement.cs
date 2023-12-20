@@ -10,19 +10,48 @@ public class MonsterMovement : MonoBehaviour
     private int checkpointDestination = 0;
 
     public Transform playerTransform;
+    public Rigidbody2D enemyRB;
     private bool isChasing;
     public float chaseDistance;
-    
+
+    [Header("KnockBack")]
+    [SerializeField] public float KBForce;
+    [SerializeField] public float KBCounter;
+    public float KBTotalTime;
+    public bool KnockFromRight;
+
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        playerTransform = GameObject.FindWithTag("Player").transform;
+        if(KBCounter <= 0)
+        {
+            movement();
+        }
+        else
+        {
+            if (KnockFromRight)
+            {
+                enemyRB.velocity = new Vector2(-KBForce, KBForce);
+            }
+            else if (!KnockFromRight)
+            {
+                enemyRB.velocity = new Vector2(KBForce, KBForce);
+            }
+            KBCounter -= Time.deltaTime;
+        }
+        
+    }
+
+    public void movement()
+    {
         if (isChasing)
         {
-            if(transform.position.x > playerTransform.position.x)
+            if (transform.position.x > playerTransform.position.x)
             {
                 transform.localScale = new Vector3(2, 2, 1);
-                transform.position += Vector3.left * movespeed * 2 *  Time.deltaTime;
+                transform.position += Vector3.left * movespeed * 2 * Time.deltaTime;
             }
             if (transform.position.x < playerTransform.position.x)
             {
@@ -33,7 +62,7 @@ public class MonsterMovement : MonoBehaviour
         }
         else
         {
-            if(Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
+            if (Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
             {
                 isChasing = true;
             }
