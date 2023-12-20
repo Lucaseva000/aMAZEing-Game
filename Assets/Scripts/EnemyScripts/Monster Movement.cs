@@ -31,13 +31,16 @@ public class MonsterMovement : MonoBehaviour
         }
         else
         {
-            if (KnockFromRight)
+            if(KBCounter == KBTotalTime)
             {
-                enemyRB.velocity = new Vector2(-KBForce, KBForce);
-            }
-            else if (!KnockFromRight)
-            {
-                enemyRB.velocity = new Vector2(KBForce, KBForce);
+                if (KnockFromRight)
+                {
+                    enemyRB.velocity = new Vector2(-KBForce, (KBForce/2));
+                }
+                else if (!KnockFromRight)
+                {
+                    enemyRB.velocity = new Vector2(KBForce, (KBForce/2));
+                }
             }
             KBCounter -= Time.deltaTime;
         }
