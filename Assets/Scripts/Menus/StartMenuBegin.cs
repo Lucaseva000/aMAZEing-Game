@@ -7,10 +7,12 @@ public class StartMenuBegin : MonoBehaviour
 {
 
     public PlayerHealth P;
+    public PlayerInventoryManagment I;
     public void StartGame()
     {
         SceneManager.LoadScene(1);//Scene Manager
         Time.timeScale = 1;
+        I.setWorth(0);
         P.setHealth(P.getMaxHealth());
     }
 

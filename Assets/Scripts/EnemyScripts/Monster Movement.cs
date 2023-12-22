@@ -12,6 +12,7 @@ public class MonsterMovement : MonoBehaviour
     public Transform playerTransform;
     private bool isChasing;
     public float chaseDistance;
+    public float chaseLose;
     
 
     // Update is called once per frame
@@ -28,6 +29,9 @@ public class MonsterMovement : MonoBehaviour
             {
                 transform.localScale = new Vector3(-2, 2, 1);
                 transform.position += Vector3.right * movespeed * 2 * Time.deltaTime;
+            }
+            if(Vector2.Distance(transform.position, playerTransform.position) > chaseLose){
+                isChasing = false;
             }
 
         }
