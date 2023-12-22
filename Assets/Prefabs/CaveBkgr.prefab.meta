@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/CaveBkgr.prefab.meta
 guid: c32c4030c1013174db726c2072ab8c2a
 PrefabImporter:
+========
+guid: 547e8be31bbdfd844b7285cc41ca7435
+DefaultImporter:
+>>>>>>>> b7a9fade643cf1c870a6fe1577864d12d848173d:Assets/Scenes/PauseMenu.unity.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
