@@ -7,11 +7,13 @@ public class StartMenuBegin : MonoBehaviour
 {
 
     public PlayerHealth P;
+    public MoveDirectionSO m;
     public void StartGame()
     {
         SceneManager.LoadScene(1);//Scene Manager
         Time.timeScale = 1;
         P.setHealth(P.getMaxHealth());
+        m.setDirection("left");
     }
 
     public void QuitGame()
