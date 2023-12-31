@@ -498,7 +498,7 @@ MonoBehaviour:
   coyateTime: 0.2
   jumpBuffer: 0.2
   dashCooldown: 1
-  dashDuration: 0.3
+  dashDuration: 0.25
   dashStrength: 20
   crouchHeightPercent: 0.625
   crouchSpeedPercent: 0.75
@@ -936,7 +936,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4, y: 36}
+  m_AnchoredPosition: {x: -4, y: 59}
   m_SizeDelta: {x: 58, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5775827546939634943

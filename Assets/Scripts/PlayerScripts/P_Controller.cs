@@ -61,7 +61,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashStrength;
     private bool canDash = true;
-    private bool hasDashed = false;
     // ---------------------------------------- //
     [Header("Movement: Crouch")]
     [SerializeField] private float crouchHeightPercent = 0.625f;
@@ -265,7 +264,8 @@ public class PlayerController : MonoBehaviour
                     if (!isGrounded) doubleJump = false; 
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 } else {
-                    doubleJump = false;                    StartCoroutine(WallJump());
+                    doubleJump = false;
+                    StartCoroutine(WallJump());
                 }
                 isGrounded = false;
                 jumpBufferCounter = 0;
@@ -290,23 +290,12 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = 0;
         disableMovement = true;
         tr.emitting = true;
-        if (isGrounded || Grounded()) {
-            hasDashed = false;
-        }
-        if (isCrouching && Grounded())
-        {
-            rb.velocity = new Vector2(dashStrength * transform.localScale.x, 0);
-        }
-        else
-        {
-            if (!hasDashed)
-            {
-                float x = (float)Mathf.Cos(Mathf.Deg2Rad * GetAngleTowardsMouse());
-                float y = (float)Mathf.Sin(Mathf.Deg2Rad * GetAngleTowardsMouse());
-                rb.velocity = new Vector2(x * dashStrength, y * dashStrength);
-                hasDashed = true;
-            }
-            
+        if (isCrouching && Grounded()) {
+            rb.velocity = new Vector2(dashStrength *  transform.localScale.x, 0);
+        } else {
+            float x = (float)Mathf.Cos(Mathf.Deg2Rad * GetAngleTowardsMouse());
+            float y = (float)Mathf.Sin(Mathf.Deg2Rad * GetAngleTowardsMouse());
+            rb.velocity = new Vector2(x * dashStrength, y * dashStrength);
         }
         yield return new WaitForSeconds(dashDuration);
         rb.gravityScale = gravity;
@@ -375,7 +364,7 @@ public class PlayerController : MonoBehaviour
     // ---------------------------------------- //
 
     public void DeathCheck() {
-        if (p.getHealth() == 0 && DeathPanel.activeSelf == false)
+        if (p.getHealth() <= 0 && DeathPanel.activeSelf == false)
         {
             DeathPanel.SetActive(true);
             Time.timeScale = 0;
