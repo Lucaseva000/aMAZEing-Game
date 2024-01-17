@@ -44,7 +44,13 @@ public class PlayerController : MonoBehaviour
     // ---------------------------------------- //
     [Header("Movement: Horizontal")]
     [SerializeField] private float speed;
-    private float xMovement;
+    [SerializeField] private float targetSpeed;
+    [SerializeField] private float runAccel;
+    [SerializeField] private float runDeccel;
+    [SerializeField] private float airAccel;
+    [SerializeField] private float airDeccel;
+    private float currentSpeed;
+    private float xDirection;
     // ---------------------------------------- //
     [Header("Movement: Vertical")]
     [SerializeField]private float damper;
@@ -125,7 +131,7 @@ public class PlayerController : MonoBehaviour
     // In update get all inputs
     void Update(){
         DeathCheck();
-        xMovement = playerControls.Land.Move.ReadValue<float>();
+        xDirection = playerControls.Land.Move.ReadValue<float>();
         Flip();
         rotationPoint.transform.rotation = Quaternion.Euler(0, 0, GetAngleTowardsMouse());
         CoyateTimer();
@@ -215,17 +221,39 @@ public class PlayerController : MonoBehaviour
     }
     // Horizontal Movement
     void HorizontalMovement(){
-        if (!disableMovement && !disableHorizontalMovement){
-            if (!isCrouching) rb.velocity = new Vector2(speed * xMovement, rb.velocity.y);
-            else if (isCrouching) rb.velocity = new Vector2(speed * xMovement * crouchSpeedPercent, rb.velocity.y);
+
+        targetSpeed = xDirection * speed;
+        targetSpeed = Mathf.Lerp(currentSpeed, targetSpeed, .5f);
+
+        float accelRate;
+        if (isGrounded)
+        {
+            accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? runAccel : runDeccel;
+
+        } else
+        {
+            accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? runAccel * airAccel : runDeccel * airDeccel;
+        }
+
+        if (Mathf.Abs(currentSpeed) > Mathf.Abs(targetSpeed) && Mathf.Sign(currentSpeed) == Mathf.Sign(targetSpeed) && Mathf.Abs(targetSpeed) > 0.01f && !isGrounded)
+        {
+            accelRate = 0;
+        }
+
+        float speedDif = targetSpeed - currentSpeed;
+        float xMovement = speedDif * accelRate;
+
+            if (!disableMovement && !disableHorizontalMovement){
+            if (!isCrouching) rb.AddForce(xMovement * Vector2.right, ForceMode2D.Force);
+            else if (isCrouching) rb.AddForce((xMovement * crouchSpeedPercent) * Vector2.right, ForceMode2D.Force);
         }
     }
     void Flip(){
-        if (xMovement < 0) {
+        if (xDirection < 0) {
             transform.localScale = new Vector3(-1, 1, 1);
             rotationPoint.transform.localScale = new Vector3(-1, 1, 1);
             // keeps rotationPoint child facing same way as before (double negative puts it back to 1)
-        } else if (xMovement > 0) {
+        } else if (xDirection > 0) {
             transform.localScale = new Vector3(1, 1, 1);
             rotationPoint.transform.localScale = new Vector3(1, 1, 1); 
             // keeps rotationPoint child facing same way as before
@@ -274,7 +302,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator WallJump(){
         disableMovement = true;
-        rb.velocity = new Vector2(-xMovement * jumpForce * Mathf.Cos(wallJumpAngle * Mathf.Deg2Rad), jumpForce * Mathf.Sin(wallJumpAngle * Mathf.Deg2Rad));
+        rb.velocity = new Vector2(-xDirection * jumpForce * Mathf.Cos(wallJumpAngle * Mathf.Deg2Rad), jumpForce * Mathf.Sin(wallJumpAngle * Mathf.Deg2Rad));
         yield return new WaitForSeconds(wallJumpDuration);
         disableMovement = false;
     }
@@ -359,7 +387,7 @@ public class PlayerController : MonoBehaviour
     }
     void IsWallSliding(){
         if (disableMovement) wallSlide = false;
-        else wallSlide  = rb.velocity.y < 0 && !isCrouching && ((xMovement < 0 && DirectionalCollide(4, 0.1f, terrain)) || (xMovement > 0 && DirectionalCollide(2, 0.1f, terrain)));
+        else wallSlide  = rb.velocity.y < 0 && !isCrouching && ((xDirection < 0 && DirectionalCollide(4, 0.1f, terrain)) || (xDirection > 0 && DirectionalCollide(2, 0.1f, terrain)));
     }
     // ---------------------------------------- //
 
