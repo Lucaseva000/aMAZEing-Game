@@ -2021,6 +2021,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5284722516641482158, guid: 6ba903cca7b16304b8debd2faba34b12, type: 3}
+      propertyPath: dashCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284722516641482158, guid: 6ba903cca7b16304b8debd2faba34b12, type: 3}
+      propertyPath: dashDuration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284722516641482158, guid: 6ba903cca7b16304b8debd2faba34b12, type: 3}
+      propertyPath: dashStrength
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7399743821097423929, guid: 6ba903cca7b16304b8debd2faba34b12, type: 3}
       propertyPath: m_Name
       value: PlayerLeftLoad

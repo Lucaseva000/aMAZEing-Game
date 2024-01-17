@@ -84,6 +84,8 @@ public class PlayerController : MonoBehaviour
     private bool isWallSliding;
     private Vector2 wallSlideSize;
     private bool wallSlide;
+    private bool touchingWallL;
+    private bool touchingWallR;
     // ---------------------------------------- //
 
     [Header("Enemy Knockback")]
@@ -137,6 +139,7 @@ public class PlayerController : MonoBehaviour
         CoyateTimer();
         if (jumpBufferCounter > 0) jumpBufferCounter -= Time.deltaTime;
         IsWallSliding();
+        IsTouchingWall();
         if (p.getHealth() > p.getMaxHealth())
         {
             p.setHealth(p.getMaxHealth());
@@ -287,8 +290,8 @@ public class PlayerController : MonoBehaviour
     void Jump(){
         if (!(disableMovement || DirectionalCollide(1, 0.2f, terrain))){
             if (isGrounded) doubleJump = true;
-            if (jumpBufferCounter > 0 && (isGrounded || doubleJump || isWallSliding)){
-                if (!isWallSliding){
+            if (jumpBufferCounter > 0 && (isGrounded || doubleJump || (touchingWallL || touchingWallR))){
+                if (isGrounded || !(touchingWallL || touchingWallR)){
                     if (!isGrounded) doubleJump = false; 
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 } else {
@@ -301,8 +304,11 @@ public class PlayerController : MonoBehaviour
         }
     }
     IEnumerator WallJump(){
+        int d = 0;
+        if (touchingWallL) d = 1;
+        if (touchingWallR) d = -1;
         disableMovement = true;
-        rb.velocity = new Vector2(-xDirection * jumpForce * Mathf.Cos(wallJumpAngle * Mathf.Deg2Rad), jumpForce * Mathf.Sin(wallJumpAngle * Mathf.Deg2Rad));
+        rb.velocity = new Vector2(d * jumpForce * Mathf.Cos(wallJumpAngle * Mathf.Deg2Rad), jumpForce * Mathf.Sin(wallJumpAngle * Mathf.Deg2Rad));
         yield return new WaitForSeconds(wallJumpDuration);
         disableMovement = false;
     }
@@ -385,9 +391,13 @@ public class PlayerController : MonoBehaviour
             ChangeAnimationState("Idle");
         }
     }
+    void IsTouchingWall(){
+        touchingWallL = DirectionalCollide(4, 0.1f, terrain);
+        touchingWallR = DirectionalCollide(2, 0.1f, terrain);
+    }
     void IsWallSliding(){
         if (disableMovement) wallSlide = false;
-        else wallSlide  = rb.velocity.y < 0 && !isCrouching && ((xDirection < 0 && DirectionalCollide(4, 0.1f, terrain)) || (xDirection > 0 && DirectionalCollide(2, 0.1f, terrain)));
+        else wallSlide  = !isCrouching && !isGrounded && ((xDirection < 0 && DirectionalCollide(4, 0.1f, terrain)) || (xDirection > 0 && DirectionalCollide(2, 0.1f, terrain)));
     }
     // ---------------------------------------- //
 

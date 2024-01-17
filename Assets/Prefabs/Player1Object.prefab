@@ -493,6 +493,11 @@ MonoBehaviour:
   rotationPoint: {fileID: 8069930103697980960}
   tr: {fileID: 5525150994071957680}
   speed: 10
+  targetSpeed: 10
+  runAccel: 2
+  runDeccel: 2
+  airAccel: 1
+  airDeccel: 1
   damper: 0.5
   jumpForce: 27.5
   coyateTime: 0.2
