@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Player One
   m_EditorClassIdentifier: 
   maxHealth: 20
-  currentHealth: 0
-  pauseHealthRegen: 1
-  justHit: 1
+  currentHealth: 20
+  pauseHealthRegen: 0
+  justHit: 0
