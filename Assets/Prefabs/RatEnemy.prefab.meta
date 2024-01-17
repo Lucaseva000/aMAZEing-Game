@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/RatEnemy.prefab.meta
 guid: 4b9e52d17d385914397b9abb591c1dc5
 PrefabImporter:
+========
+guid: 3b746da7b40c860c894ce656f273a7de
+DefaultImporter:
+>>>>>>>> 6cc97892325b65bfb0937aee1b79fc7ecd30c275:Assets/AstarPathfindingProject/Documentation/documentation.pdf.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
