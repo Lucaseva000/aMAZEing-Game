@@ -494,8 +494,8 @@ MonoBehaviour:
   tr: {fileID: 5525150994071957680}
   speed: 10
   targetSpeed: 10
-  runAccel: 7.18
-  runDeccel: 7.58
+  runAccel: 2
+  runDeccel: 2
   airAccel: 1
   airDeccel: 1
   damper: 0.5
