@@ -375,7 +375,7 @@ public class PlayerController : MonoBehaviour
     // ---------------------------------------- //
 
     public void DeathCheck() {
-        if (p.getHealth() == 0 && DeathPanel.activeSelf == false)
+        if (p.getHealth() <= 0 && DeathPanel.activeSelf == false)
         {
             DeathPanel.SetActive(true);
             Time.timeScale = 0;
