@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 
 public class SceneTransitioner : MonoBehaviour
@@ -12,9 +13,10 @@ public class SceneTransitioner : MonoBehaviour
     public string direction;
     public MoveDirectionSO M;
     public string targetScene;
+
     void Update()
     {
-        if (CheckForPlayer())
+        if (CheckForPlayer() && Input.GetKeyDown(KeyCode.E))
         {
             M.setDirection(direction);
             SceneManager.LoadScene(targetScene);

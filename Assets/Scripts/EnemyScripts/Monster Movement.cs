@@ -13,6 +13,8 @@ public class MonsterMovement : MonoBehaviour
     public Rigidbody2D enemyRB;
     private bool isChasing;
     public float chaseDistance;
+    public float totalChaseTime = 5;
+    private float currentChaseTime;
 
     [Header("KnockBack")]
     [SerializeField] public float KBForce;
@@ -49,7 +51,7 @@ public class MonsterMovement : MonoBehaviour
 
     public void movement()
     {
-        if (isChasing)
+        if (isChasing && currentChaseTime > 0)
         {
             if (transform.position.x > playerTransform.position.x)
             {
@@ -62,9 +64,14 @@ public class MonsterMovement : MonoBehaviour
                 transform.position += Vector3.right * movespeed * 2 * Time.deltaTime;
             }
 
+            currentChaseTime -= Time.deltaTime;
+
         }
         else
         {
+            isChasing = false;
+            currentChaseTime = totalChaseTime;
+
             if (Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
             {
                 isChasing = true;
