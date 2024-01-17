@@ -31,12 +31,8 @@ namespace Pathfinding {
 			if (ai != null) ai.onSearchPath -= Update;
 		}
 
-        /// <summary>Updates the AI's destination every frame</summary>
-        private void FixedUpdate()
-        {
-            target = GameObject.FindWithTag("Player").transform;
-		}
-        void Update () {
+		/// <summary>Updates the AI's destination every frame</summary>
+		void Update () {
 			if (target != null && ai != null) ai.destination = target.position;
 		}
 	}

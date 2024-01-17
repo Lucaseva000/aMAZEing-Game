@@ -13,7 +13,6 @@ public class SceneTransitioner : MonoBehaviour
     public string direction;
     public MoveDirectionSO M;
     public string targetScene;
-    public int y = 0;
 
     void Update()
     {
@@ -27,7 +26,7 @@ public class SceneTransitioner : MonoBehaviour
 
     bool CheckForPlayer()
     {
-        return Physics2D.OverlapBox(transform.position + new Vector3(0, y, 0) , transform.localScale / 2, 0, P);
+        return Physics2D.OverlapBox(transform.position, transform.localScale / 2, 0, P);
     }
 
 
