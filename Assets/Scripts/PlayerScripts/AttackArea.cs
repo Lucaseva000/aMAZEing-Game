@@ -23,14 +23,18 @@ public class AttackArea : MonoBehaviour
             {
                 e = r.transform.gameObject;
                 e.GetComponent<EnemyHealth>().damage(damage);
-                e.GetComponent<MonsterMovement>().KBCounter = e.GetComponent<MonsterMovement>().KBTotalTime;
-                if(transform.position.x >= e.transform.position.x)
+                if (e.GetComponent<MonsterMovement>())
                 {
-                    e.GetComponent<MonsterMovement>().KnockFromRight = true;
-                }
-                else
-                {
-                    e.GetComponent<MonsterMovement>().KnockFromRight = false;
+                    e.GetComponent<MonsterMovement>().KBCounter = e.GetComponent<MonsterMovement>().KBTotalTime;
+                    if(transform.position.x >= e.transform.position.x)
+                    {
+                        e.GetComponent<MonsterMovement>().KnockFromRight = true;
+                    }
+                    else
+                    {
+                        e.GetComponent<MonsterMovement>().KnockFromRight = false;
+                    }
+
                 }
 
             }
