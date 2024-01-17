@@ -44,7 +44,13 @@ public class PlayerController : MonoBehaviour
     // ---------------------------------------- //
     [Header("Movement: Horizontal")]
     [SerializeField] private float speed;
-    private float xMovement;
+    [SerializeField] private float targetSpeed;
+    [SerializeField] private float runAccel;
+    [SerializeField] private float runDeccel;
+    [SerializeField] private float airAccel;
+    [SerializeField] private float airDeccel;
+    private float currentSpeed;
+    private float xDirection;
     // ---------------------------------------- //
     [Header("Movement: Vertical")]
     [SerializeField]private float damper;
@@ -61,7 +67,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashStrength;
     private bool canDash = true;
-    private bool hasDashed = false;
     // ---------------------------------------- //
     [Header("Movement: Crouch")]
     [SerializeField] private float crouchHeightPercent = 0.625f;
@@ -79,6 +84,8 @@ public class PlayerController : MonoBehaviour
     private bool isWallSliding;
     private Vector2 wallSlideSize;
     private bool wallSlide;
+    private bool touchingWallL;
+    private bool touchingWallR;
     // ---------------------------------------- //
 
     [Header("Enemy Knockback")]
@@ -126,12 +133,13 @@ public class PlayerController : MonoBehaviour
     // In update get all inputs
     void Update(){
         DeathCheck();
-        xMovement = playerControls.Land.Move.ReadValue<float>();
+        xDirection = playerControls.Land.Move.ReadValue<float>();
         Flip();
         rotationPoint.transform.rotation = Quaternion.Euler(0, 0, GetAngleTowardsMouse());
         CoyateTimer();
         if (jumpBufferCounter > 0) jumpBufferCounter -= Time.deltaTime;
         IsWallSliding();
+        IsTouchingWall();
         if (p.getHealth() > p.getMaxHealth())
         {
             p.setHealth(p.getMaxHealth());
@@ -216,17 +224,39 @@ public class PlayerController : MonoBehaviour
     }
     // Horizontal Movement
     void HorizontalMovement(){
-        if (!disableMovement && !disableHorizontalMovement){
-            if (!isCrouching) rb.velocity = new Vector2(speed * xMovement, rb.velocity.y);
-            else if (isCrouching) rb.velocity = new Vector2(speed * xMovement * crouchSpeedPercent, rb.velocity.y);
+
+        targetSpeed = xDirection * speed;
+        targetSpeed = Mathf.Lerp(currentSpeed, targetSpeed, .5f);
+
+        float accelRate;
+        if (isGrounded)
+        {
+            accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? runAccel : runDeccel;
+
+        } else
+        {
+            accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? runAccel * airAccel : runDeccel * airDeccel;
+        }
+
+        if (Mathf.Abs(currentSpeed) > Mathf.Abs(targetSpeed) && Mathf.Sign(currentSpeed) == Mathf.Sign(targetSpeed) && Mathf.Abs(targetSpeed) > 0.01f && !isGrounded)
+        {
+            accelRate = 0;
+        }
+
+        float speedDif = targetSpeed - currentSpeed;
+        float xMovement = speedDif * accelRate;
+
+            if (!disableMovement && !disableHorizontalMovement){
+            if (!isCrouching) rb.AddForce(xMovement * Vector2.right, ForceMode2D.Force);
+            else if (isCrouching) rb.AddForce((xMovement * crouchSpeedPercent) * Vector2.right, ForceMode2D.Force);
         }
     }
     void Flip(){
-        if (xMovement < 0) {
+        if (xDirection < 0) {
             transform.localScale = new Vector3(-1, 1, 1);
             rotationPoint.transform.localScale = new Vector3(-1, 1, 1);
             // keeps rotationPoint child facing same way as before (double negative puts it back to 1)
-        } else if (xMovement > 0) {
+        } else if (xDirection > 0) {
             transform.localScale = new Vector3(1, 1, 1);
             rotationPoint.transform.localScale = new Vector3(1, 1, 1); 
             // keeps rotationPoint child facing same way as before
@@ -260,12 +290,13 @@ public class PlayerController : MonoBehaviour
     void Jump(){
         if (!(disableMovement || DirectionalCollide(1, 0.2f, terrain))){
             if (isGrounded) doubleJump = true;
-            if (jumpBufferCounter > 0 && (isGrounded || doubleJump || isWallSliding)){
-                if (!isWallSliding){
+            if (jumpBufferCounter > 0 && (isGrounded || doubleJump || (touchingWallL || touchingWallR))){
+                if (isGrounded || !(touchingWallL || touchingWallR)){
                     if (!isGrounded) doubleJump = false; 
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 } else {
-                    doubleJump = false;                    StartCoroutine(WallJump());
+                    doubleJump = false;
+                    StartCoroutine(WallJump());
                 }
                 isGrounded = false;
                 jumpBufferCounter = 0;
@@ -273,8 +304,11 @@ public class PlayerController : MonoBehaviour
         }
     }
     IEnumerator WallJump(){
+        int d = 0;
+        if (touchingWallL) d = 1;
+        if (touchingWallR) d = -1;
         disableMovement = true;
-        rb.velocity = new Vector2(-xMovement * jumpForce * Mathf.Cos(wallJumpAngle * Mathf.Deg2Rad), jumpForce * Mathf.Sin(wallJumpAngle * Mathf.Deg2Rad));
+        rb.velocity = new Vector2(d * jumpForce * Mathf.Cos(wallJumpAngle * Mathf.Deg2Rad), jumpForce * Mathf.Sin(wallJumpAngle * Mathf.Deg2Rad));
         yield return new WaitForSeconds(wallJumpDuration);
         disableMovement = false;
     }
@@ -290,23 +324,12 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = 0;
         disableMovement = true;
         tr.emitting = true;
-        if (isGrounded || Grounded()) {
-            hasDashed = false;
-        }
-        if (isCrouching && Grounded())
-        {
-            rb.velocity = new Vector2(dashStrength * transform.localScale.x, 0);
-        }
-        else
-        {
-            if (!hasDashed)
-            {
-                float x = (float)Mathf.Cos(Mathf.Deg2Rad * GetAngleTowardsMouse());
-                float y = (float)Mathf.Sin(Mathf.Deg2Rad * GetAngleTowardsMouse());
-                rb.velocity = new Vector2(x * dashStrength, y * dashStrength);
-                hasDashed = true;
-            }
-            
+        if (isCrouching && Grounded()) {
+            rb.velocity = new Vector2(dashStrength *  transform.localScale.x, 0);
+        } else {
+            float x = (float)Mathf.Cos(Mathf.Deg2Rad * GetAngleTowardsMouse());
+            float y = (float)Mathf.Sin(Mathf.Deg2Rad * GetAngleTowardsMouse());
+            rb.velocity = new Vector2(x * dashStrength, y * dashStrength);
         }
         yield return new WaitForSeconds(dashDuration);
         rb.gravityScale = gravity;
@@ -368,9 +391,13 @@ public class PlayerController : MonoBehaviour
             ChangeAnimationState("Idle");
         }
     }
+    void IsTouchingWall(){
+        touchingWallL = DirectionalCollide(4, 0.1f, terrain);
+        touchingWallR = DirectionalCollide(2, 0.1f, terrain);
+    }
     void IsWallSliding(){
         if (disableMovement) wallSlide = false;
-        else wallSlide  = rb.velocity.y < 0 && !isCrouching && ((xMovement < 0 && DirectionalCollide(4, 0.1f, terrain)) || (xMovement > 0 && DirectionalCollide(2, 0.1f, terrain)));
+        else wallSlide  = !isCrouching && !isGrounded && ((xDirection < 0 && DirectionalCollide(4, 0.1f, terrain)) || (xDirection > 0 && DirectionalCollide(2, 0.1f, terrain)));
     }
     // ---------------------------------------- //
 

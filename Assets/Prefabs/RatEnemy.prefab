@@ -78,7 +78,11 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
+<<<<<<< HEAD
   m_SortingOrder: 0
+=======
+  m_SortingOrder: 3
+>>>>>>> 6cc97892325b65bfb0937aee1b79fc7ecd30c275
   m_Sprite: {fileID: -156723678, guid: 4e9f5545515c250458d80b0313ce7731, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -174,7 +178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f54d465ca6b67b47a7f5b64642d3e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   damage: 1
+=======
+  damage: 2
+>>>>>>> 6cc97892325b65bfb0937aee1b79fc7ecd30c275
 --- !u!114 &1974207846806080065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +202,12 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   enemyRB: {fileID: 1355473867537630165}
   chaseDistance: 5
+<<<<<<< HEAD
   KBForce: 7
+=======
+  totalChaseTime: 5
+  KBForce: 5
+>>>>>>> 6cc97892325b65bfb0937aee1b79fc7ecd30c275
   KBCounter: 0
   KBTotalTime: 0.75
   KnockFromRight: 0
@@ -257,7 +270,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6636010365064033666}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 0, y: 0, z: -12.365002}
+=======
+  m_LocalPosition: {x: 3.24, y: -0.9, z: -12.365002}
+>>>>>>> 6cc97892325b65bfb0937aee1b79fc7ecd30c275
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -322,7 +339,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9023662864420020621}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 0, y: 0, z: -12.365002}
+=======
+  m_LocalPosition: {x: -8.81, y: -0.88, z: -12.365002}
+>>>>>>> 6cc97892325b65bfb0937aee1b79fc7ecd30c275
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
