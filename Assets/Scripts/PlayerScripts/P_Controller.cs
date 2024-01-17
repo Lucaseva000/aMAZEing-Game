@@ -49,7 +49,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float runDeccel;
     [SerializeField] private float airAccel;
     [SerializeField] private float airDeccel;
-    private float currentSpeed;
     private float xDirection;
     // ---------------------------------------- //
     [Header("Movement: Vertical")]
@@ -226,7 +225,7 @@ public class PlayerController : MonoBehaviour
     void HorizontalMovement(){
 
         targetSpeed = xDirection * speed;
-        targetSpeed = Mathf.Lerp(currentSpeed, targetSpeed, .5f);
+        targetSpeed = Mathf.Lerp(rb.velocity.x, targetSpeed, 1f);
 
         float accelRate;
         if (isGrounded)
@@ -238,12 +237,12 @@ public class PlayerController : MonoBehaviour
             accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? runAccel * airAccel : runDeccel * airDeccel;
         }
 
-        if (Mathf.Abs(currentSpeed) > Mathf.Abs(targetSpeed) && Mathf.Sign(currentSpeed) == Mathf.Sign(targetSpeed) && Mathf.Abs(targetSpeed) > 0.01f && !isGrounded)
+        if (Mathf.Abs(rb.velocity.x) > Mathf.Abs(targetSpeed) && Mathf.Sign(rb.velocity.x) == Mathf.Sign(targetSpeed) && Mathf.Abs(targetSpeed) > 0.01f && !isGrounded)
         {
             accelRate = 0;
         }
 
-        float speedDif = targetSpeed - currentSpeed;
+        float speedDif = targetSpeed - rb.velocity.x;
         float xMovement = speedDif * accelRate;
 
             if (!disableMovement && !disableHorizontalMovement){
