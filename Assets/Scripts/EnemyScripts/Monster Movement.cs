@@ -60,12 +60,12 @@ public class MonsterMovement : MonoBehaviour
 
             if (transform.position.x > playerTransform.position.x)
             {
-                transform.localScale = new Vector3(2, 2, 1);
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 1);
                 transform.position += Vector3.left * movespeed * 2 * Time.deltaTime;
             }
             if (transform.position.x < playerTransform.position.x)
             {
-                transform.localScale = new Vector3(-2, 2, 1);
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
                 transform.position += Vector3.right * movespeed * 2 * Time.deltaTime;
             }
 
@@ -89,7 +89,7 @@ public class MonsterMovement : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, checkpoints[0].position, movespeed * Time.deltaTime);
                 if (Vector2.Distance(transform.position, checkpoints[0].position) < .2f)
                 {
-                    transform.localScale = new Vector3(-2, 2, 1);
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
                     checkpointDestination = 1;
                 }
             }
@@ -99,7 +99,7 @@ public class MonsterMovement : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, checkpoints[1].position, movespeed * Time.deltaTime);
                 if (Vector2.Distance(transform.position, checkpoints[1].position) < .2f)
                 {
-                    transform.localScale = new Vector3(2, 2, 1);
+                    transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 1);
                     checkpointDestination = 0;
                 }
             }
