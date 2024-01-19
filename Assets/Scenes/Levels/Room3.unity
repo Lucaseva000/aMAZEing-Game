@@ -1135,7 +1135,7 @@ MonoBehaviour:
     m_Bits: 128
   direction: right
   M: {fileID: 11400000, guid: 306f27037391f8f438360a2b0b3027a9, type: 2}
-  targetScene: SampleScene2
+  targetScene: Room2
   y: -4
 --- !u!212 &745073053
 SpriteRenderer:
