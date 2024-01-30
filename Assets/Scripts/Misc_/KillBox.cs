@@ -10,7 +10,7 @@ public class KillBox : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
-            other.GetComponentInParent<PlayerController>().damage(100);
+            other.GetComponentInParent<PlayerController>().p.setHealth(0);
 
         }
     }

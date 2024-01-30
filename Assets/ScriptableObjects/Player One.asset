@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 20
-  pauseHealthRegen: 0
+  pauseHealthRegen: 1
   justHit: 0

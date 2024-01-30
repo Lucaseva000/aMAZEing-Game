@@ -1965,7 +1965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f54d465ca6b67b47a7f5b64642d3e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1000000
+  damage: 1
 --- !u!114 &1161313858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2001,9 +2001,9 @@ MonoBehaviour:
   chaseDistance: 5
   chaseLose: 0
   totalChaseTime: 5
-  KBForce: 0
+  KBForce: 5
   KBCounter: 0
-  KBTotalTime: 0
+  KBTotalTime: 0.5
   KnockFromRight: 0
 --- !u!1 &1287437219
 GameObject:

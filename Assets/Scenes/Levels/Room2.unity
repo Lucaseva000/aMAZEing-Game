@@ -1820,7 +1820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8730607421493921151, guid: cd7d8f05284d9d14580a41fb48a9c43d, type: 3}
       propertyPath: direction
-      value: left
+      value: center
       objectReference: {fileID: 0}
     - target: {fileID: 8730607421493921151, guid: cd7d8f05284d9d14580a41fb48a9c43d, type: 3}
       propertyPath: targetScene
