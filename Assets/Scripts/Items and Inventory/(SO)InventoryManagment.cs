@@ -5,6 +5,11 @@ using UnityEngine;
 public class PlayerInventoryManagment : ScriptableObject{
     //Coin worth
     public int worth;
+    //Inventory Items
+    public int maxItems = 3;
+    public List<ItemInstance> items = new();
+
+
    public int getWorth()
     {
         return worth;
@@ -14,10 +19,6 @@ public class PlayerInventoryManagment : ScriptableObject{
     {
         worth = i;
     }
-    //Inventory Items
-    
-    public int maxItems = 3;
-    public List<ItemInstance> items = new();
     public bool AddItem(ItemInstance itemToAdd)
     {
         //Will search for an empty space in the inventory

@@ -132,9 +132,9 @@ MonoBehaviour:
   chaseDistance: 5
   chaseLose: 0
   totalChaseTime: 5
-  KBForce: 0
+  KBForce: 5
   KBCounter: 0
-  KBTotalTime: 0
+  KBTotalTime: 0.5
   KnockFromRight: 0
 --- !u!114 &4020327090810908981
 MonoBehaviour:
@@ -150,6 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 10
   enemy: {fileID: 211218743167238839}
+  dropTable: []
+  chanceToDrop: 0
 --- !u!114 &1556284214224799279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f54d465ca6b67b47a7f5b64642d3e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1000000
+  damage: 1
 --- !u!61 &2404648698277558791
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -267,7 +269,7 @@ Transform:
   - {fileID: 5049536139847574274}
   - {fileID: 56517893368675601}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3641956176025302988
 GameObject:

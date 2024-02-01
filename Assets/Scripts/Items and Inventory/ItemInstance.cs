@@ -6,9 +6,9 @@ using UnityEngine;
 public class ItemInstance
 {
     public ItemData itemType;
-    public ItemInstance(ItemData z)
+    public ItemInstance(ItemData item)
     {
-        itemType = z;
+        itemType = item;
     }
     //all sorts of stuff can be added here and in the itemData scripts. The itemdata scripts will be the ones that are used over and over though
 }
