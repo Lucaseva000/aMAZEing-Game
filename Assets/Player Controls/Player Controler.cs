@@ -89,6 +89,33 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MenuSlotOne"",
+                    ""type"": ""Button"",
+                    ""id"": ""89254289-1ec4-48b4-9a93-17ae2057a238"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MenuSlotTwo"",
+                    ""type"": ""Button"",
+                    ""id"": ""d6c3fba2-fcba-4048-ba67-46fdc921142e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MenuSlotThree"",
+                    ""type"": ""Button"",
+                    ""id"": ""91cf83ad-02ff-473d-bc1e-ed6016af173b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -201,6 +228,39 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a033fcc4-8b5d-44ec-acc8-adc0428e1c78"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuSlotOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de2987cb-5592-432f-ab98-e5a7a1d4c9ea"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuSlotTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f6c9d8b-a3af-49ad-b0f7-9739118be5a3"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuSlotThree"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -216,6 +276,9 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
         m_Land_MousePosition = m_Land.FindAction("MousePosition", throwIfNotFound: true);
         m_Land_Attack = m_Land.FindAction("Attack", throwIfNotFound: true);
         m_Land_Interact = m_Land.FindAction("Interact", throwIfNotFound: true);
+        m_Land_MenuSlotOne = m_Land.FindAction("MenuSlotOne", throwIfNotFound: true);
+        m_Land_MenuSlotTwo = m_Land.FindAction("MenuSlotTwo", throwIfNotFound: true);
+        m_Land_MenuSlotThree = m_Land.FindAction("MenuSlotThree", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -284,6 +347,9 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
     private readonly InputAction m_Land_MousePosition;
     private readonly InputAction m_Land_Attack;
     private readonly InputAction m_Land_Interact;
+    private readonly InputAction m_Land_MenuSlotOne;
+    private readonly InputAction m_Land_MenuSlotTwo;
+    private readonly InputAction m_Land_MenuSlotThree;
     public struct LandActions
     {
         private @PlayerControler m_Wrapper;
@@ -295,6 +361,9 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
         public InputAction @MousePosition => m_Wrapper.m_Land_MousePosition;
         public InputAction @Attack => m_Wrapper.m_Land_Attack;
         public InputAction @Interact => m_Wrapper.m_Land_Interact;
+        public InputAction @MenuSlotOne => m_Wrapper.m_Land_MenuSlotOne;
+        public InputAction @MenuSlotTwo => m_Wrapper.m_Land_MenuSlotTwo;
+        public InputAction @MenuSlotThree => m_Wrapper.m_Land_MenuSlotThree;
         public InputActionMap Get() { return m_Wrapper.m_Land; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -325,6 +394,15 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @MenuSlotOne.started += instance.OnMenuSlotOne;
+            @MenuSlotOne.performed += instance.OnMenuSlotOne;
+            @MenuSlotOne.canceled += instance.OnMenuSlotOne;
+            @MenuSlotTwo.started += instance.OnMenuSlotTwo;
+            @MenuSlotTwo.performed += instance.OnMenuSlotTwo;
+            @MenuSlotTwo.canceled += instance.OnMenuSlotTwo;
+            @MenuSlotThree.started += instance.OnMenuSlotThree;
+            @MenuSlotThree.performed += instance.OnMenuSlotThree;
+            @MenuSlotThree.canceled += instance.OnMenuSlotThree;
         }
 
         private void UnregisterCallbacks(ILandActions instance)
@@ -350,6 +428,15 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @MenuSlotOne.started -= instance.OnMenuSlotOne;
+            @MenuSlotOne.performed -= instance.OnMenuSlotOne;
+            @MenuSlotOne.canceled -= instance.OnMenuSlotOne;
+            @MenuSlotTwo.started -= instance.OnMenuSlotTwo;
+            @MenuSlotTwo.performed -= instance.OnMenuSlotTwo;
+            @MenuSlotTwo.canceled -= instance.OnMenuSlotTwo;
+            @MenuSlotThree.started -= instance.OnMenuSlotThree;
+            @MenuSlotThree.performed -= instance.OnMenuSlotThree;
+            @MenuSlotThree.canceled -= instance.OnMenuSlotThree;
         }
 
         public void RemoveCallbacks(ILandActions instance)
@@ -376,5 +463,8 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
         void OnMousePosition(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnMenuSlotOne(InputAction.CallbackContext context);
+        void OnMenuSlotTwo(InputAction.CallbackContext context);
+        void OnMenuSlotThree(InputAction.CallbackContext context);
     }
 }

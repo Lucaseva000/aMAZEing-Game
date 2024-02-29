@@ -38,4 +38,9 @@ public class PlayerInventoryManagment : ScriptableObject{
         }
         return false;
     }
+
+    public void clearInventory()
+    {
+        items.Clear();
+    }
 }

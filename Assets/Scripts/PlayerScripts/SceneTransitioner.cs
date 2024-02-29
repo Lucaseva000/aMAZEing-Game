@@ -19,7 +19,7 @@ public class SceneTransitioner : MonoBehaviour
     {
         if (CheckForPlayer() && Input.GetKeyDown(KeyCode.E))
         {
-            M.setDirection(direction);
+            M.SetDirection(direction);
             SceneManager.LoadScene(targetScene);
 
         }

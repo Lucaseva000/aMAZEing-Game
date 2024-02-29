@@ -123,7 +123,6 @@ public class PlayerController : MonoBehaviour
         playerControls.Land.Dash.started    += TryToDash;
         playerControls.Land.Crouch.started  += CrouchInput;
         playerControls.Land.Crouch.canceled += CrouchInput;
-        playerControls.Land.Attack.started += Attack;
         pState = GetComponent<PlayerStateList>();
         p.setRegenPause(false);
     }
@@ -216,11 +215,6 @@ public class PlayerController : MonoBehaviour
         return Physics2D.OverlapBox(centerOfCollider, sizeOfCollider, 0, target); 
     }
     // ---------------------------------------- //
-    void Attack(InputAction.CallbackContext context)
-    {
-
-
-    }
     // Horizontal Movement
     void HorizontalMovement(){
 

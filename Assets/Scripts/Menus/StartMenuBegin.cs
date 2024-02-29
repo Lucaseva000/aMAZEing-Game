@@ -13,7 +13,7 @@ public class StartMenuBegin : MonoBehaviour
         SceneManager.LoadScene(1);//Scene Manager
         Time.timeScale = 1;
         P.setHealth(P.getMaxHealth());
-        m.setDirection("left");
+        m.SetDirection("left");
     }
 
     public void QuitGame()

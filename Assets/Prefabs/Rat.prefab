@@ -130,7 +130,7 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   enemyRB: {fileID: 8319651573864508665}
   chaseDistance: 5
-  chaseLose: 0
+  chaseLose: 1
   totalChaseTime: 5
   KBForce: 5
   KBCounter: 0

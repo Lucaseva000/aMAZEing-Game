@@ -7,7 +7,7 @@ public class MoveDirectionSO : ScriptableObject
 {
     public string moveDirection;
 
-    public void setDirection(string s)
+    public void SetDirection(string s)
     {
         moveDirection = s;
     }

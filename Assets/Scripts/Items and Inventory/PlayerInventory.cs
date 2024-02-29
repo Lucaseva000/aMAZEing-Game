@@ -3,14 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 public class PlayerInventory : MonoBehaviour
 {
     public PlayerInventoryManagment inventory;
     public TextMeshProUGUI coinText;
+    public int selectedSlot;
+    private PlayerControler playerControls;
+    public GameObject hotbar;
 
+    public void Awake()
+    {
+        playerControls = new PlayerControler();
+    }
+    void OnEnable()
+    {
+        playerControls.Enable();
+    }
+    void OnDisable()
+    {
+        playerControls.Disable();
+    }
     public void Update()
     {
         setCoinText();
+        setSlotInput();
+       
     }
 
     
@@ -38,6 +56,36 @@ public class PlayerInventory : MonoBehaviour
     public void setCoinText()
     {
         coinText.text = inventory.getWorth().ToString();
+    }
+
+    public void setSlotInput()
+    {
+        playerControls.Land.MenuSlotOne.started += SlotOne;
+        playerControls.Land.MenuSlotTwo.started += SlotTwo;
+        playerControls.Land.MenuSlotThree.started += SlotThree;
+    }
+    public void SlotOne(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            selectedSlot = 0;
+        }
+    }
+
+    public void SlotTwo(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            selectedSlot = 1;
+        }
+    }
+
+    public void SlotThree(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            selectedSlot = 2;
+        }
     }
 
 }
