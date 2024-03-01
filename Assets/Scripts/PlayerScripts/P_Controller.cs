@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     //               OLD STUFF                  //
     // ======================================== //
     PlayerStateList pState;
+    PlayerCombat pCombat;
     public static PlayerController Instance;
 
     [Header("Death Screen")]
@@ -123,7 +124,10 @@ public class PlayerController : MonoBehaviour
         playerControls.Land.Dash.started    += TryToDash;
         playerControls.Land.Crouch.started  += CrouchInput;
         playerControls.Land.Crouch.canceled += CrouchInput;
+        playerControls.Land.Attack.started += pCombat.Attack;
+
         pState = GetComponent<PlayerStateList>();
+        pCombat = GetComponent<PlayerCombat>();
         p.setRegenPause(false);
     }
     // ---------------------------------------- //

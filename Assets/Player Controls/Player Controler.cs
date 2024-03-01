@@ -176,17 +176,6 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""06727bcc-a4dc-4013-9255-1433af73795f"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""a72a24fb-cb5f-4526-8bd9-17a49bd3c927"",
                     ""path"": ""<Keyboard>/leftCtrl"",
                     ""interactions"": """",
@@ -210,7 +199,7 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0b250997-67ac-4439-9a26-661f980c5609"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
