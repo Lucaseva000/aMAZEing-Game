@@ -1399,6 +1399,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 56517893368675601, guid: 5636205423e45e8409bb416317161498, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 56517893368675601, guid: 5636205423e45e8409bb416317161498, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.76
+      objectReference: {fileID: 0}
     - target: {fileID: 1556284214224799279, guid: 5636205423e45e8409bb416317161498, type: 3}
       propertyPath: damage
       value: 1
@@ -1406,6 +1414,10 @@ PrefabInstance:
     - target: {fileID: 2027031937650777541, guid: 5636205423e45e8409bb416317161498, type: 3}
       propertyPath: m_Name
       value: Rat
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404648698277558791, guid: 5636205423e45e8409bb416317161498, type: 3}
+      propertyPath: m_SpriteTilingProperty.drawMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4020327090810908981, guid: 5636205423e45e8409bb416317161498, type: 3}
       propertyPath: chanceToDrop
@@ -1419,6 +1431,14 @@ PrefabInstance:
       propertyPath: dropTable.Array.data[0].itemType
       value: 
       objectReference: {fileID: 11400000, guid: dc1f1ec57bbff97439108f45d6644efd, type: 2}
+    - target: {fileID: 5049536139847574274, guid: 5636205423e45e8409bb416317161498, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049536139847574274, guid: 5636205423e45e8409bb416317161498, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.67
+      objectReference: {fileID: 0}
     - target: {fileID: 5406962393283163786, guid: 5636205423e45e8409bb416317161498, type: 3}
       propertyPath: m_DrawMode
       value: 1

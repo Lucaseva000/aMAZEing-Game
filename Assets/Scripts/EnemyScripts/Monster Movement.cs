@@ -22,11 +22,22 @@ public class MonsterMovement : MonoBehaviour
     public float KBTotalTime;
     public bool KnockFromRight;
 
+    private SpriteRenderer spriteRenderer;
 
+    private void Start()
+    {
+        enemyRB = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        // Flips enemy
+        spriteRenderer.flipX = enemyRB.velocity.x < 0f;
+
+        // Causes Knockback and disables movement when hit
         playerTransform = GameObject.FindWithTag("Player").transform;
         if(KBCounter <= 0)
 
@@ -60,12 +71,12 @@ public class MonsterMovement : MonoBehaviour
 
             if (transform.position.x > playerTransform.position.x)
             {
-                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 1);
+                //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 1);
                 transform.position += Vector3.left * movespeed * 2 * Time.deltaTime;
             }
             if (transform.position.x < playerTransform.position.x)
             {
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
+                //transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
                 transform.position += Vector3.right * movespeed * 2 * Time.deltaTime;
             }
 
@@ -80,6 +91,7 @@ public class MonsterMovement : MonoBehaviour
             if (Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
             {
                 isChasing = true;
+                Debug.Log("CHASE TIME");
             }
 
 
@@ -89,7 +101,7 @@ public class MonsterMovement : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, checkpoints[0].position, movespeed * Time.deltaTime);
                 if (Vector2.Distance(transform.position, checkpoints[0].position) < .2f)
                 {
-                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
+                    //transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
                     checkpointDestination = 1;
                 }
             }
@@ -99,7 +111,7 @@ public class MonsterMovement : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, checkpoints[1].position, movespeed * Time.deltaTime);
                 if (Vector2.Distance(transform.position, checkpoints[1].position) < .2f)
                 {
-                    transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 1);
+                    //transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
                     checkpointDestination = 0;
                 }
             }
