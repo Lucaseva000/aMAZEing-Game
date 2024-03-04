@@ -8,9 +8,11 @@ public class PlayerInventory : MonoBehaviour
 {
     public PlayerInventoryManagment inventory;
     public TextMeshProUGUI coinText;
-    public int selectedSlot;
+    public int selectedSlot = 0;
     private PlayerControler playerControls;
     public GameObject hotbar;
+    public List<GameObject> itemSlots = new();
+
 
     public void Awake()
     {
@@ -24,18 +26,24 @@ public class PlayerInventory : MonoBehaviour
     {
         playerControls.Disable();
     }
+    public void Start()
+    {
+        itemSlots.Add(hotbar.transform.Find("ItemSlotOne").gameObject);
+        itemSlots.Add(hotbar.transform.Find("ItemSlotTwo").gameObject);
+        itemSlots.Add(hotbar.transform.Find("ItemSlotThree").gameObject);
+    }
     public void Update()
     {
+
         setCoinText();
         setSlotInput();
-       
+        slotUpdate();
+
     }
 
-    
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        Debug.Log(other.tag);
         //If collides with coin
         if (other.CompareTag("Coin"))
         {
@@ -87,5 +95,37 @@ public class PlayerInventory : MonoBehaviour
             selectedSlot = 2;
         }
     }
+
+    public void slotUpdate()
+    {
+
+        enableSlot();
+
+        for (int i = 0; i < inventory.items.Count; i++)
+        {
+            
+            itemSlots[i].transform.Find("ItemImage").gameObject.GetComponent<Image>().sprite = inventory.items[i].itemType.icon;
+            itemSlots[i].transform.Find("ItemImage").gameObject.SetActive(true);
+            
+
+        }
+
+    }
+
+    public void enableSlot()
+    {
+        for(int i = 0; i < itemSlots.Count; i++)
+        {
+            if(selectedSlot == i)
+            {
+                itemSlots[i].transform.Find("LightUp").gameObject.SetActive(true);
+            }
+            else
+            {
+                itemSlots[i].transform.Find("LightUp").gameObject.SetActive(false);
+            }
+        }
+    }
+
 
 }
