@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -8,15 +9,27 @@ public class PlayerAttack : MonoBehaviour
     private bool attacking;
     public float timeToAttack = 0.25f;
     public float timer = 0f;
-
+    private PlayerControler playerControls;
 
     // The damage only applies on the first frame of the attack
+    public void Awake()
+    {
+        playerControls = new PlayerControler();
+    }
+    void OnEnable()
+    {
+        playerControls.Enable();
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && !attacking)
+
+        if (!attacking)
         {
-            Attack();
+            playerControls.Land.Attack.started += Attack;
+
         }
+
 
         if (attacking)
         {
@@ -29,10 +42,14 @@ public class PlayerAttack : MonoBehaviour
             }
         }
     }
-    private void Attack()
+    private void Attack(InputAction.CallbackContext context)
     {
-        attacking = true;
-        AttackArea.SetActive(true);
-        AttackArea.GetComponent<AttackArea>().Attack();
+
+        if (context.phase == InputActionPhase.Started)
+        {
+            attacking = true;
+            AttackArea.SetActive(true);
+            AttackArea.GetComponent<AttackArea>().Attack();
+        }
     }
 }

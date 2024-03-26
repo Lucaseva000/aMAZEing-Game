@@ -38,6 +38,7 @@ public class PlayerInventory : MonoBehaviour
         setCoinText();
         setSlotInput();
         slotUpdate();
+        playerControls.Land.DropItem.started += ItemDrop;
 
     }
 
@@ -96,19 +97,34 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    public void ItemDrop(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            if(inventory.items.Count > 0)
+            {
+                inventory.removeItem(selectedSlot);
+            }
+        }
+    }
+
     public void slotUpdate()
     {
 
         enableSlot();
+
+        for (int i = 0; i < itemSlots.Count - inventory.items.Count; i++)
+        {
+            itemSlots[itemSlots.Count - i - 1].transform.Find("ItemImage").gameObject.SetActive(false);
+        }
 
         for (int i = 0; i < inventory.items.Count; i++)
         {
             
             itemSlots[i].transform.Find("ItemImage").gameObject.GetComponent<Image>().sprite = inventory.items[i].itemType.icon;
             itemSlots[i].transform.Find("ItemImage").gameObject.SetActive(true);
-            
-
         }
+
 
     }
 

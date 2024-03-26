@@ -124,7 +124,6 @@ public class PlayerController : MonoBehaviour
         playerControls.Land.Dash.started    += TryToDash;
         playerControls.Land.Crouch.started  += CrouchInput;
         playerControls.Land.Crouch.canceled += CrouchInput;
-        playerControls.Land.Attack.started += pCombat.Attack;
 
         pState = GetComponent<PlayerStateList>();
         pCombat = GetComponent<PlayerCombat>();

@@ -116,6 +116,15 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DropItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""391d9fef-0b2f-4942-998e-6214344389a5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -250,6 +259,17 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
                     ""action"": ""MenuSlotThree"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fdba4944-b4fb-46a0-a81a-b62c3338f82c"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DropItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -268,6 +288,7 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
         m_Land_MenuSlotOne = m_Land.FindAction("MenuSlotOne", throwIfNotFound: true);
         m_Land_MenuSlotTwo = m_Land.FindAction("MenuSlotTwo", throwIfNotFound: true);
         m_Land_MenuSlotThree = m_Land.FindAction("MenuSlotThree", throwIfNotFound: true);
+        m_Land_DropItem = m_Land.FindAction("DropItem", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -339,6 +360,7 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
     private readonly InputAction m_Land_MenuSlotOne;
     private readonly InputAction m_Land_MenuSlotTwo;
     private readonly InputAction m_Land_MenuSlotThree;
+    private readonly InputAction m_Land_DropItem;
     public struct LandActions
     {
         private @PlayerControler m_Wrapper;
@@ -353,6 +375,7 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
         public InputAction @MenuSlotOne => m_Wrapper.m_Land_MenuSlotOne;
         public InputAction @MenuSlotTwo => m_Wrapper.m_Land_MenuSlotTwo;
         public InputAction @MenuSlotThree => m_Wrapper.m_Land_MenuSlotThree;
+        public InputAction @DropItem => m_Wrapper.m_Land_DropItem;
         public InputActionMap Get() { return m_Wrapper.m_Land; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -392,6 +415,9 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
             @MenuSlotThree.started += instance.OnMenuSlotThree;
             @MenuSlotThree.performed += instance.OnMenuSlotThree;
             @MenuSlotThree.canceled += instance.OnMenuSlotThree;
+            @DropItem.started += instance.OnDropItem;
+            @DropItem.performed += instance.OnDropItem;
+            @DropItem.canceled += instance.OnDropItem;
         }
 
         private void UnregisterCallbacks(ILandActions instance)
@@ -426,6 +452,9 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
             @MenuSlotThree.started -= instance.OnMenuSlotThree;
             @MenuSlotThree.performed -= instance.OnMenuSlotThree;
             @MenuSlotThree.canceled -= instance.OnMenuSlotThree;
+            @DropItem.started -= instance.OnDropItem;
+            @DropItem.performed -= instance.OnDropItem;
+            @DropItem.canceled -= instance.OnDropItem;
         }
 
         public void RemoveCallbacks(ILandActions instance)
@@ -455,5 +484,6 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
         void OnMenuSlotOne(InputAction.CallbackContext context);
         void OnMenuSlotTwo(InputAction.CallbackContext context);
         void OnMenuSlotThree(InputAction.CallbackContext context);
+        void OnDropItem(InputAction.CallbackContext context);
     }
 }

@@ -91,7 +91,6 @@ public class MonsterMovement : MonoBehaviour
             if (Vector2.Distance(transform.position, playerTransform.position) < chaseDistance)
             {
                 isChasing = true;
-                Debug.Log("CHASE TIME");
             }
 
 

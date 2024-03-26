@@ -43,4 +43,9 @@ public class PlayerInventoryManagment : ScriptableObject{
     {
         items.Clear();
     }
+
+    public void removeItem(int slot)
+    {
+        items.RemoveAt(slot);
+    }
 }
