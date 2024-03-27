@@ -21,7 +21,11 @@ public class PlayerAttack : MonoBehaviour
         playerControls.Enable();
     }
 
-    void Update()
+    void OnDisable()
+    {
+        playerControls.Disable();
+    }
+    void FixedUpdate()
     {
 
         if (!attacking)
