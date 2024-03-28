@@ -20,21 +20,24 @@ public class EnemyHealth : MonoBehaviour
     {
         if(enemyHealth <= 0)
         {
-            dropItem();
+            if(!(dropTable.Count == 0))
+            {
+                dropItem();
+            }
             Destroy(enemy);
         }
     }
 
     public void dropItem()
     {
-        float randomNumber = Random.Range(0, 10);
+        float randomNumber = Random.Range(0, 100);
         if(randomNumber <= chanceToDrop)
         {
             int itemPlace = Random.Range(0, dropTable.Count);
             GameObject itemDropped = new GameObject();
             itemDropped.AddComponent<Rigidbody2D>();
             itemDropped.AddComponent<BoxCollider2D>().isTrigger = true;
-            itemDropped.AddComponent<BoxCollider2D>().excludeLayers = PlayerLayer;
+            itemDropped.AddComponent<BoxCollider2D>().excludeLayers = 128; //The layers are oredered by binary digits. I don't know why but it makes me mad. 128 is 8 digitsn of binary 10000000 is the binary for future reference. It start at layer 0
             itemDropped.AddComponent<ItemInstanceHolder>().item = dropTable[itemPlace];
             itemDropped.tag = "Item";
             itemDropped.AddComponent<SpriteRenderer>().sprite = dropTable[itemPlace].itemType.icon;

@@ -150,8 +150,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 10
   enemy: {fileID: 211218743167238839}
-  dropTable: []
-  chanceToDrop: 0
+  dropTable:
+  - itemType: {fileID: 11400000, guid: dc1f1ec57bbff97439108f45d6644efd, type: 2}
+  - itemType: {fileID: 11400000, guid: f33576d918099d5449f827d006e83dca, type: 2}
+  chanceToDrop: 100
 --- !u!114 &1556284214224799279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f54d465ca6b67b47a7f5b64642d3e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 3
 --- !u!61 &2404648698277558791
 BoxCollider2D:
   m_ObjectHideFlags: 0

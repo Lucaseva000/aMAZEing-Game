@@ -8,10 +8,13 @@ public class StartMenuBegin : MonoBehaviour
 
     public PlayerHealth P;
     public MoveDirectionSO m;
+    public PlayerInventoryManagment i;
     public void StartGame()
     {
         SceneManager.LoadScene(1);//Scene Manager
         Time.timeScale = 1;
+        i.clearInventory();
+        i.setWorth(0);
         P.setHealth(P.getMaxHealth());
         m.SetDirection("left");
     }
