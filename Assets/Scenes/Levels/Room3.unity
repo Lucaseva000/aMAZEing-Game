@@ -270,7 +270,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 40.099827, y: 14.849006}
+  m_Size: {x: 40.099827, y: 20}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -284,7 +284,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43425048}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.1723995, y: -16.7652, z: -1.8750314}
+  m_LocalPosition: {x: 11.1723995, y: -21, z: -1.8750314}
   m_LocalScale: {x: 2.0157316, y: 1.9118, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -911,7 +911,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 4.6323714, y: 1}
+  m_Size: {x: 100, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -925,8 +925,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592359153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.4267, y: 10.1, z: 0}
-  m_LocalScale: {x: 17.457867, y: 20.545958, z: 1}
+  m_LocalPosition: {x: 5.4267, y: -5.1, z: 0}
+  m_LocalScale: {x: 17.457867, y: 60, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2230,6 +2230,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1442024187
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6452321371863666388, guid: e75e8f7099a7c4a9c91949cacdaa77e7, type: 3}
+      propertyPath: m_Name
+      value: Killbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764025754136044478, guid: e75e8f7099a7c4a9c91949cacdaa77e7, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764025754136044478, guid: e75e8f7099a7c4a9c91949cacdaa77e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764025754136044478, guid: e75e8f7099a7c4a9c91949cacdaa77e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764025754136044478, guid: e75e8f7099a7c4a9c91949cacdaa77e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.025612287
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764025754136044478, guid: e75e8f7099a7c4a9c91949cacdaa77e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764025754136044478, guid: e75e8f7099a7c4a9c91949cacdaa77e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764025754136044478, guid: e75e8f7099a7c4a9c91949cacdaa77e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764025754136044478, guid: e75e8f7099a7c4a9c91949cacdaa77e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764025754136044478, guid: e75e8f7099a7c4a9c91949cacdaa77e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764025754136044478, guid: e75e8f7099a7c4a9c91949cacdaa77e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764025754136044478, guid: e75e8f7099a7c4a9c91949cacdaa77e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e75e8f7099a7c4a9c91949cacdaa77e7, type: 3}
 --- !u!1 &1526905110
 GameObject:
   m_ObjectHideFlags: 0
@@ -2618,6 +2679,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 10
   enemy: {fileID: 1782944882}
+  dropTable: []
+  chanceToDrop: 0
 --- !u!61 &1782944890
 BoxCollider2D:
   m_ObjectHideFlags: 0
