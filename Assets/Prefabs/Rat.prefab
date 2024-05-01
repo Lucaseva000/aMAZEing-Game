@@ -153,7 +153,7 @@ MonoBehaviour:
   dropTable:
   - itemType: {fileID: 11400000, guid: dc1f1ec57bbff97439108f45d6644efd, type: 2}
   - itemType: {fileID: 11400000, guid: f33576d918099d5449f827d006e83dca, type: 2}
-  chanceToDrop: 100
+  chanceToDrop: 50
 --- !u!114 &1556284214224799279
 MonoBehaviour:
   m_ObjectHideFlags: 0
