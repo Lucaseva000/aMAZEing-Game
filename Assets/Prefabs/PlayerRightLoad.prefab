@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m: {fileID: 11400000, guid: 306f27037391f8f438360a2b0b3027a9, type: 2}
   newDirection: right
-  p: {fileID: 0}
+  p: {fileID: 2198438745133222874}
 --- !u!1001 &1694820504532002539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,6 +189,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
+--- !u!1 &2198438745133222874 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 650587768467139889, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
+  m_PrefabInstance: {fileID: 1694820504532002539}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8733493396789632923 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7977757012348909936, guid: 38147fbede39b944a9ef217a3a4e8acd, type: 3}
